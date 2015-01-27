@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Define PATH
 PATH=$PATH:$HOME/bin
 export PATH
 
