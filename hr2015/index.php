@@ -1,64 +1,28 @@
-<?php
-/**
- * The main template file.
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * For example, it puts together the home page when no home.php file exists.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
+<?php get_header(); ?>
 
-get_header(); ?>
+	<div id="post-promoted">
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="row">
+					<div id="image-promoted" class="large-12 hide-for-small">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- #post-promoted -->
+	<div id="post-list">
+		<div class="row">
+			<p>It's easy to configure Magellan using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure <code>jquery.js</code>, <code>foundation.js</code>, and <code>foundation.magellan.js</code> have been included on your page before continuing. For example, add the following before the closing <code>&lt;body&gt;</code> tag:</p>
 
-	<div id="primary" class="site-content">
-		<div id="content" role="main">
-		<?php if ( have_posts() ) : ?>
+			<p>It's easy to configure Magellan using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure <code>jquery.js</code>, <code>foundation.js</code>, and <code>foundation.magellan.js</code> have been included on your page before continuing. For example, add the following before the closing <code>&lt;body&gt;</code> tag:</p>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
+			<p>It's easy to configure Magellan using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure <code>jquery.js</code>, <code>foundation.js</code>, and <code>foundation.magellan.js</code> have been included on your page before continuing. For example, add the following before the closing <code>&lt;body&gt;</code> tag:</p>
 
-		<?php else : ?>
+			<p>It's easy to configure Magellan using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure <code>jquery.js</code>, <code>foundation.js</code>, and <code>foundation.magellan.js</code> have been included on your page before continuing. For example, add the following before the closing <code>&lt;body&gt;</code> tag:</p>
 
-			<article id="post-0" class="post no-results not-found">
+			<p>It's easy to configure Magellan using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure <code>jquery.js</code>, <code>foundation.js</code>, and <code>foundation.magellan.js</code> have been included on your page before continuing. For example, add the following before the closing <code>&lt;body&gt;</code> tag:</p>
+		</div>
+	</div>
 
-			<?php if ( current_user_can( 'edit_posts' ) ) :
-				// Show a different message to a logged-in user who can add posts.
-			?>
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'No posts to display', 'vita' ); ?></h1>
-				</header>
-
-				<div class="entry-content">
-					<p><?php printf( __( 'Ready to publish your first post? <a href="%s">Get started here</a>.', 'vita' ), admin_url( 'post-new.php' ) ); ?></p>
-				</div><!-- .entry-content -->
-
-			<?php else :
-				// Show the default message to everyone else.
-			?>
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'Nothing Found', 'vita' ); ?></h1>
-				</header>
-
-				<div class="entry-content">
-					<p><?php _e( 'Apologies, but no results were found. Perhaps searching will help find a related post.', 'vita' ); ?></p>
-					<?php get_search_form(); ?>
-				</div><!-- .entry-content -->
-			<?php endif; // end current_user_can() check ?>
-
-			</article><!-- #post-0 -->
-
-		<?php endif; // end have_posts() check ?>
-
-		</div><!-- #content -->
-	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -1,26 +1,9 @@
-<?php
-/**
- * The Header for our theme.
- *
- * Displays all of the <head> section and everything up till <div id="main">
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
-?><!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html <?php language_attributes(); ?>>
+<!DOCTYPE html>
+<html lang="es">
 <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 	<?php if (is_single()) : ?>
 	<?php
@@ -76,71 +59,13 @@
 </head>
 
 <body <?php body_class(); ?>> 
-<div id="fb-root"></div>
-<script>
-	window.fbAsyncInit = function() {
-	  FB.init({
-	    appId      : '257796824412950',
-	    channelUrl : '//maspormenos.com.pe/pichangatottus/channel.html',
-	    status     : true,
-	    cookie     : true,
-	    xfbml      : true
-	  });
-	};
 
-	(function(d, debug){var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];if   (d.getElementById(id)) {return;}js = d.createElement('script'); js.id = id; js.async = true;js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";ref.parentNode.insertBefore(js, ref);}(document, /*debug*/ false));
-		function postToFeed(title, desc, url, image){
-		var obj = {method: 'feed',link: url, picture: image, name: title, description: desc};
-		function callback(response){}
-		FB.ui(obj, callback);
-	};
-
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=257796824412950&version=v2.0";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="row-fluid">
-	<div class="navbar ">
-		<div class="container">
-			<div class="navbar-inner"> 
-				<div id="logo">
-					<?php
-						if(get_option('tottus_logo')) {
-							$logo = get_option('tottus_logo');
-						}
-						else
-						{
-							$logo = get_template_directory_uri() . '/images/logo_header.png';	
-						}								
-					?>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo $logo; ?>" alt="<?php bloginfo('name'); ?>" /></a>
-				</div><!-- #logo -->
-				<div id="social-box">
-					<a href="<?php echo get_option('social_fb_url'); ?>" target="_blank" class="icon fb"></a>
-					<a href="<?php echo get_option('social_twitter_url'); ?>" target="_blank" class="icon tw"></a>
-					<a href="<?php echo get_option('social_youtube_url'); ?>" target="_blank" class="icon yt"></a>
-				</div>
-			</div>
+<header id="top-nav" class="noPadding">
+	<nav class="row">
+		<div class="large-12 columns">
+			<ul class="title-area">
+				<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+			</ul>
 		</div>
-	</div>
-</div>
-
-<div class="sideNavbar">
-	<div class="sideNavbar-inner">
-		<ul class="navigation">
-			<li data-section="1" data-toggle="collapse" data-target=".nav-collapse" class="btn inicio">Inicio</li>
-            <li data-section="2" data-toggle="collapse" data-target=".nav-collapse" class="btn participa">Participa</li>
-            <li data-section="3" data-toggle="collapse" data-target=".nav-collapse" class="btn tabla">Tabla de Posiciones</li>
-            <li data-section="4" data-toggle="collapse" data-target=".nav-collapse" class="btn estadio">El Estadio</li>
-		</ul>
-		<div class="terms-n-conditions">
-			<a href="http://maspormenos.com.pe/pichangatottus/terminoscondiciones.pdf" target="_blank">Ver terminos y condiciones</a>
-		</div>
-	</div>
-	<div class="tab"></div>
-</div>
+	</nav>
+</header>
