@@ -23,7 +23,7 @@
 				<li class="hide-for-small"><a href="#">Equipo HRMag</a></li>
 				<li class="hide-for-small"><a href="#">Únete al equipo</a></li>
 				<li class="hide-for-small"><a href="#">Publicidad</a></li>
-				<li><a href="#">Suscríbete</a></li>
+				<li><a href="#test">Suscríbete</a></li>
 			</ul>
 		</div>
 		<div id="footer-redes" class="small-4 medium-3 large-3 columns">
