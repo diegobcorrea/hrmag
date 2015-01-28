@@ -46,27 +46,14 @@ html, body
 *,
 *before,
 *after 
-  -webkit-box-sizing border-box
-  -moz-box-sizing border-box
   box-sizing border-box 
 
 html,
 body 
   font-size 100% 
 
-body 
-  background #fff
-  color #222222
-  padding 0
-  margin 0
-  font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
-  font-weight normal
-  font-style normal
-  line-height 1.5
-  position relative
-  cursor auto 
-
-ahover 
+a,
+a:hover 
   cursor pointer 
 
 img 
@@ -74,7 +61,7 @@ img
   height auto 
 
 img 
-  -ms-interpolation-mode bicubic 
+  interpolation-mode bicubic 
 
 #map_canvas img,
 #map_canvas embed,
@@ -104,8 +91,8 @@ img
   visibility hidden 
 
 .antialiased 
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale 
+  font-smoothing antialiased
+  font-smoothing grayscale 
 
 img 
   display inline-block
@@ -161,10 +148,11 @@ select
 
 .column,
 .columns 
+  box-sizing border-box 
+  float left 
   padding-left 0.9375em
   padding-right 0.9375em
   width 100%
-  float left 
 
 [class*="column"] + [class*="column"]last-child 
   float right 
@@ -1145,7 +1133,6 @@ button, .button
   border-style solid
   border-width 0
   cursor pointer
-  font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
   font-weight normal
   line-height normal
   margin 0 0 1.25rem
@@ -1565,7 +1552,6 @@ select
   border-color #cccccc
   padding 0.5rem
   font-size 0.875rem
-  font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
   color rgba(0, 0, 0, 0.75)
   line-height normal
   border-radius 0
@@ -1825,7 +1811,6 @@ meta.foundation-mq-topbar
       color #FFFFFF
       padding 12px 0 12px 0
       padding-left 0.9375rem
-      font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
       font-size 0.8125rem
       font-weight normal
       text-transform none 
@@ -1922,14 +1907,14 @@ meta.foundation-mq-topbar
     .top-bar-section ul li.active > a 
       background #2ba6cb
       color #FFFFFF 
-      .top-bar-section ul li.active > ahover 
+      .top-bar-section ul li.active > a:hover 
         background #258faf
         color #FFFFFF 
   .top-bar-section .has-form 
     padding 0.9375rem 
   .top-bar-section .has-dropdown 
     position relative 
-    .top-bar-section .has-dropdown > aafter 
+    .top-bar-section .has-dropdown > a:after 
       content ""
       display block
       width 0
@@ -1982,7 +1967,7 @@ meta.foundation-mq-topbar
         .top-bar-section .dropdown li.title h5 a, .top-bar-section .dropdown li.parent-link a 
           color #FFFFFF
           display block 
-          .top-bar-section .dropdown li.title h5 ahover, .top-bar-section .dropdown li.parent-link ahover 
+          .top-bar-section .dropdown li.title h5 a:hover, .top-bar-section .dropdown li.parent-link a:hover 
             background none 
       .top-bar-section .dropdown li.has-form 
         padding 8px 0.9375rem 
@@ -2769,7 +2754,6 @@ meta.foundation-mq-topbar
     color #EEEEEE
     font-weight normal
     font-size 1rem
-    font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif 
   .pricing-table .price 
     background-color #F6F6F6
     padding 0.9375rem 1.25rem
@@ -2777,7 +2761,6 @@ meta.foundation-mq-topbar
     color #333333
     font-weight normal
     font-size 2rem
-    font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif 
   .pricing-table .description 
     background-color #FFFFFF
     padding 0.9375rem
@@ -2882,11 +2865,11 @@ meta.foundation-mq-topbar
     color #FFFFFF 
   .icon-bar > * i 
     color #FFFFFF 
-  .icon-bar > ahover 
+  .icon-bar > a:hover 
     background #2ba6cb 
-    .icon-bar > ahover label 
+    .icon-bar > a:hover label 
       color #FFFFFF 
-    .icon-bar > ahover i 
+    .icon-bar > a:hover i 
       color #FFFFFF 
   .icon-bar > a.active 
     background #2ba6cb 
@@ -2965,9 +2948,8 @@ meta.foundation-mq-topbar
       background-color #EFEFEF
       color #222222
       padding 1rem 2rem
-      font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
       font-size 1rem 
-      .tabs dd > ahover, .tabs .tab-title > ahover 
+      .tabs dd > a:hover, .tabs .tab-title > a:hover 
         background-color #e1e1e1 
     .tabs dd.active a, .tabs .tab-title.active a 
       background-color #FFFFFF
@@ -3080,7 +3062,6 @@ ul.pagination
   padding 0.875rem 0
   list-style-type none
   list-style-position outside
-  font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif 
   .side-nav li 
     margin 0 0 0.4375rem 0
     font-size 0.875rem
@@ -3096,7 +3077,7 @@ ul.pagination
     .side-nav li.active > afirst-childnot(.button) 
       color #67c3df
       font-weight normal
-      font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif 
+      
     .side-nav li.divider 
       border-top 1px solid
       height 0
@@ -3126,9 +3107,8 @@ ul.pagination
       color #222222
       padding 1rem
       display block
-      font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
-      font-size 1rem 
-      .accordion .accordion-navigation > ahover, .accordion dd > ahover 
+      font-size 1rem
+      .accordion .accordion-navigation > a:hover, .accordion dd > a:hover 
         background #e3e3e3 
     .accordion .accordion-navigation > .content, .accordion dd > .content 
       display none
@@ -3297,7 +3277,7 @@ a
   color #2ba6cb
   text-decoration none
   line-height inherit 
-  ahover, afocus 
+  a:hover, a:focus 
     color #258faf 
   a img 
     border none 
@@ -3320,7 +3300,6 @@ p
 
 /* Default header styles */
 h1, h2, h3, h4, h5, h6 
-  font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
   font-weight normal
   font-style normal
   color #222222
@@ -4097,7 +4076,6 @@ dialog
     display inline
     margin-left 1rem
     margin-bottom 0
-    font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
     font-weight normal
     font-size 0.875rem
     color #999999 
@@ -4107,9 +4085,9 @@ dialog
       text-decoration none
       color #999999
       padding 0.1875rem 1rem 
-      .sub-nav dt ahover,
-      .sub-nav dd ahover,
-      .sub-nav li ahover 
+      .sub-nav dt a:hover,
+      .sub-nav dd a:hover,
+      .sub-nav li a:hover 
         color #737373 
     .sub-nav dt.active a,
     .sub-nav dd.active a,
@@ -4120,9 +4098,9 @@ dialog
       padding 0.1875rem 1rem
       cursor default
       color #FFFFFF 
-      .sub-nav dt.active ahover,
-      .sub-nav dd.active ahover,
-      .sub-nav li.active ahover 
+      .sub-nav dt.active a:hover,
+      .sub-nav dd.active a:hover,
+      .sub-nav li.active a:hover 
         background #258faf 
 
 /* Foundation Joyride */
@@ -4281,7 +4259,6 @@ dialog
       right auto  
 .label 
   font-weight normal
-  font-family "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
   text-align center
   text-decoration none
   line-height 1
@@ -4479,7 +4456,7 @@ ul.off-canvas-list
     color rgba(255, 255, 255, 0.7)
     border-bottom 1px solid #262626
     transition background 300ms ease 
-    ul.off-canvas-list li ahover 
+    ul.off-canvas-list li a:hover 
       background #242424 
 
 .move-right > .inner-wrap 
@@ -4652,11 +4629,11 @@ ul.off-canvas-list
     border-top 1px solid #5e5e5e
     border-bottom none
     margin 0 
-    .left-submenu .back > ahover 
+    .left-submenu .back > a:hover 
       background #303030
       border-top 1px solid #5e5e5e
       border-bottom none 
-    .left-submenu .back > abefore 
+    .left-submenu .back > a:before 
       content "\AB"
       margin-right 0.5rem
       display inline 
@@ -4704,11 +4681,11 @@ ul.off-canvas-list
     border-top 1px solid #5e5e5e
     border-bottom none
     margin 0 
-    .right-submenu .back > ahover 
+    .right-submenu .back > a:hover 
       background #303030
       border-top 1px solid #5e5e5e
       border-bottom none 
-    .right-submenu .back > aafter 
+    .right-submenu .back > a:after 
       content "\BB"
       margin-left 0.5rem
       display inline 
@@ -4720,12 +4697,12 @@ ul.off-canvas-list
     -o-transform translate3d(0%, 0, 0)
     transform translate3d(0%, 0, 0) 
 
-.left-off-canvas-menu ul.off-canvas-list li.has-submenu > aafter 
+.left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after 
   content "\BB"
   margin-left 0.5rem
   display inline 
 
-.right-off-canvas-menu ul.off-canvas-list li.has-submenu > abefore 
+.right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before 
   content "\AB"
   margin-right 0.5rem
   display inline 

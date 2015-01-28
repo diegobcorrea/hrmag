@@ -26,20 +26,48 @@ jq(document).ready( function() {
 
     scroller.init();
 
+    var $mobileButton = jq('#mobile-button'),
+        $mobileNav = jq('.main_menu'),
+        $content = jq('.content'),
+        $topnav = jq('#top-nav');
+    var mobileMenu = {
+        init: function() {
+            mobileMenu.listener();
+        },
+        listener : function() {
+            $mobileButton.on('click', mobileMenu.toggleMenu);
+            Hammer(document).on('swipeleft', mobileMenu.swipeLeft);
+            Hammer(document).on('swiperight', mobileMenu.swipeRight);
+        },
+        toggleMenu : function() {
+            $mobileNav.toggleClass('show-menu');
+            $mobileNav.toggleClass('hide-menu');
+            $content.toggleClass('push-left');
+            $topnav.toggleClass('push-left');
+        },
+        openMenu : function() {
+            $mobileNav.addClass('show-menu');
+            $mobileNav.removeClass('hide-menu');
+            $content.addClass('push-left');
+            $topnav.toggleClass('push-left');
+        },
+        closeMenu : function() {
+            $mobileNav.removeClass('show-menu');
+            $mobileNav.addClass('hide-menu');
+            $content.removeClass('push-left');
+            $topnav.toggleClass('push-left');
+        },
+        swipeLeft : function() {
+            mobileMenu.openMenu();
+        },
+        swipeRight : function() {
+            mobileMenu.closeMenu();
+        }
+    };
+    mobileMenu.init();
+
 });
 
-jq(window).load(function(){
-    preload([
-        'http://maspormenos.com.pe/pichangatottus/wp-content/themes/tottus/images/forms/bg-peru.png',
-        'http://maspormenos.com.pe/pichangatottus/wp-content/themes/tottus/images/forms/bg-germany.png',
-    ]);
-
-    function preload(arrayOfImages) {
-    jq(arrayOfImages).each(function () {
-        jq('<img />').attr('src',this).appendTo('body').css('display','none');
-    });
-}
-});
 
 function remove_accent(str){
     var charMap = {

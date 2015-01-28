@@ -1,11 +1,17 @@
 @import "nib"
 @import "normalize.styl"
+@import "fonts.styl"
 @import "foundation.styl"
+
+*,
+*:after,
+*:before
+	box-sizing border-box 
 
 a
 	text-decoration none
 body
-	font-family sans-serif
+	font-family 'Open Sans', sans-serif
 	font-size 16px
 figure
 	margin 0
@@ -18,7 +24,17 @@ ul
 // CSS General
 .noPadding 
 	padding 0
+.border-bottom
+	border-bottom 1px solid #919191
+.push-left
+	right 272px !important
+.show-menu
+	display block !important
 
+
+// CSS
+.content
+	position relative
 #top-nav
 	background-color rgba(0,0,0,1)
 	color #fff
@@ -28,9 +44,11 @@ ul
 	width 100%
 	z-index 1000
 	&.scrolled
-		background-color rgba(0,0,0,.5)
+		background-color rgba(0,0,0,.8)
 	nav
 		overflow hidden
+		.logo
+			margin-top 0.5em
 		ul
 			list-style none
 			overflow hidden
@@ -40,8 +58,119 @@ ul
 				a
 					float left
 					height 2.6em
+		#mobile-button
+			cursor pointer
+			font-size 32px
+			padding .1em 10px
+			width 50px
+		.main_menu.hide-menu
+			background-color #212121
+			bottom: 0
+			height: 100%
+			overflow: hidden
+			position: fixed
+			right: -272px
+			top: 0
+			z-index 2000
+			width 272px
+		.main_menu.show-menu
+			right 0
+			li
+				border-bottom 1px solid #333333
+				float left
+				text-align center
+				width 100%
+				a
+					color #fff
+					height 1em
+					line-height 1em
+					margin 1em 0
+					width 100%
+
 
 #post-promoted
 	margin-top 42px
+	overflow hidden
 	#image-promoted
 		background-color #333
+	#post-info
+		background-color rgba(75,75,75,.7)
+		color #fff
+		padding-bottom .8em
+		h2
+			color #fff
+			font-size 1.6em
+			font-weight 700
+			margin-top 0
+			padding-top .4em
+			a
+				color #fff
+		.author-box
+			overflow hidden
+			padding-top .5em
+			.avatar
+				float left
+				margin-right: 0.5em
+				width auto
+				img
+					border-radius 50%
+			.author-info
+				float left
+				.author-name
+					font-size 1.6em
+					font-weight 400
+					line-height 1em
+				.date-post
+					font-size 1em
+
+#post-list
+	margin-top 1em
+	overflow hidden
+	article
+		margin-bottom 2.5em
+		figure
+			a
+				display inline-block
+				width 100%
+		h2
+			color #212121
+			font-size 1.4em
+			font-weight 700
+			margin 0 0 .2em
+			padding .4em 0
+			a
+				color #212121
+		.post-footer
+			overflow hidden
+			.date-post
+				color #416AB2
+
+footer
+	background-color rgba(0,0,0,1)
+	color #fff
+	height 42px
+	#footer-nav
+		ul
+			list-style none
+			margin .4em 0
+			overflow hidden
+			li
+				float left
+				a
+					color #fff
+	#footer-redes
+		overflow hidden
+		figure
+			float left
+			margin-right .3em
+			margin-top .2em
+			&:last-child
+				margin-right 0
+
+@media screen and (min-width:320px)
+	.post-image
+		a
+			display inline-block
+			width 100%
+			img 
+				width 100%

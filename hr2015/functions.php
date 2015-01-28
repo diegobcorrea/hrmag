@@ -161,6 +161,8 @@ function theme_scripts_styles() {
 	 * Adds JavaScript for handling the navigation menu hide-and-show behavior.
 	 */
 	wp_enqueue_script('jquery');
+	wp_enqueue_script('theme-js-prefixfree', get_template_directory_uri() . '/js/lib/prefixfree.min.js');
+	wp_enqueue_script('theme-js-hammer', get_template_directory_uri() . '/js/lib/hammer.js');
 	wp_enqueue_script('theme-js-foundation', get_template_directory_uri() . '/js/foundation.min.js');
 	wp_enqueue_script('theme-js-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js');
 	wp_enqueue_script('theme-js-validate', get_template_directory_uri() . '/js/jquery.validate.js');
@@ -172,7 +174,10 @@ function theme_scripts_styles() {
 	/*
 	 * Loads our main stylesheet.
 	 */
+	wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+	
 	wp_enqueue_style( 'theme-style', get_stylesheet_uri() );
+    wp_enqueue_style( 'googleFonts');
 	wp_enqueue_style( 'theme-base', get_template_directory_uri() . '/css/hrstyle.css', array( 'theme-style' ), '20131002' );
 
 }

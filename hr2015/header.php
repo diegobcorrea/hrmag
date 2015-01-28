@@ -60,12 +60,15 @@
 
 <body <?php body_class(); ?>> 
 
-<header id="top-nav" class="noPadding">
-	<nav class="row">
-		<div class="large-12 columns">
-			<ul class="title-area">
-				<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-			</ul>
-		</div>
-	</nav>
-</header>
+<div class="content">
+	<header id="top-nav" class="noPadding">
+		<nav class="row">
+			<div class="small-5 medium-5 large-5 columns">
+				<figure class="logo">
+					<img src="<?php echo get_template_directory_uri(); ?>/images/hrlogo-sm-md.png" alt="HR MAG" width="95" height="25">
+				</figure>
+			</div>
+			<div id="mobile-button" class="icon-menu right show-for-small-only"></div>
+			<?php wp_nav_menu( array( 'menu' => '2', 'container_class' => 'main_menu small-5 medium-7 large-7 columns hide-for-small' )); ?>
+		</nav>
+	</header>
