@@ -3,6 +3,8 @@
 @import "fonts.styl"
 @import "foundation.styl"
 
+hr_blue = #416AB2
+
 *,
 *:after,
 *:before
@@ -30,6 +32,10 @@ ul
 	right 272px !important
 .show-menu
 	display block !important
+.js-fix {
+	position:absolute;
+	left:50%;
+}
 
 
 // CSS
@@ -91,6 +97,19 @@ ul
 #post-promoted
 	margin-top 42px
 	overflow hidden
+	position relative
+	#category-title
+		background-color rgba(75,75,75,.7)
+		overflow hidden
+		position absolute
+		top 0
+		left 0
+		z-index 9
+		text-align center
+		h1
+			color #fff
+			font-size 1.5em
+			margin 0
 	#image-promoted
 		background-color #333
 	#post-info
@@ -128,7 +147,18 @@ ul
 	overflow hidden
 	article
 		margin-bottom 2.5em
-		figure
+		.post-image
+			position relative
+			.count-comments
+				background-color rgba(75,75,75,.8)
+				border-radius 0 0 0 5px
+				color #fff
+				font-size .7em
+				padding .3em
+				position absolute
+				top 0
+				right 0
+				
 			a
 				display inline-block
 				width 100%
@@ -144,6 +174,58 @@ ul
 			overflow hidden
 			.date-post
 				color #416AB2
+
+#single 
+	margin-top 42px
+	overflow hidden
+	position relative
+	.single-image
+		height 400px
+		position relative
+		img
+			height 400px
+			position absolute
+			top 0
+			max-width: 650px;
+		h1
+			background-color rgba(75,75,75,.7)
+			bottom 0
+			color #fff
+			font-size 1.8em
+			left 0 
+			margin 0
+			padding .5em .5em
+			position absolute
+			text-align center
+			width 100%
+	.single-content
+		font-size 1.8em
+		margin 0.7em 0
+	.single-info
+		border-bottom 1px solid #919191
+		border-top 1px solid #919191
+		font-size 1.8em
+		margin-bottom 0.7em
+		padding 1.2em 0
+		position relative
+		text-align center
+		&:before
+			content ""
+			border-top 1px solid #919191
+			left 0
+			position absolute
+			top 3px
+			width 100%
+		&:after
+			content ""
+			border-bottom 1px solid #919191
+			left 0
+			position absolute
+			bottom 3px
+			width 100%
+		.single-post-date
+			color hr_blue
+			font-size 1rem
 
 footer
 	background-color rgba(0,0,0,1)

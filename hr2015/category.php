@@ -1,51 +1,54 @@
-<?php
-/**
- * The template for displaying Category pages.
- *
- * Used to display archive-type pages for posts in a category.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
+<?php get_header(); ?>
 
-get_header(); ?>
-
-	<section id="primary" class="site-content">
-		<div id="content" role="main">
-
+	<div id="post-promoted">
 		<?php if ( have_posts() ) : ?>
-			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Category Archives: %s', 'twentytwelve' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
-
-			<?php if ( category_description() ) : // Show an optional category description ?>
-				<div class="archive-meta"><?php echo category_description(); ?></div>
-			<?php endif; ?>
-			</header><!-- .archive-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
-
-				/* Include the post format-specific template for the content. If you want to
-				 * this in a child theme then include a file called called content-___.php
-				 * (where ___ is the post format) and that will be used instead.
-				 */
-				get_template_part( 'content', get_post_format() );
-
-			endwhile;
-
-			twentytwelve_content_nav( 'nav-below' );
-			?>
-
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
+		<div id="category-title" class="row small-collapse medium-collapse large-collapse">
+			<h1><?php printf( __( '%s', 'twentytwelve' ), single_cat_title( '', false ) ); ?></h1>
+		</div>
 		<?php endif; ?>
+		<div class="row small-collapse medium-collapse large-collapse">
+			<div class="small-12 medium-12 large-12 columns">
+				<div class="row small-collapse medium-collapse large-collapse">
+					<figure id="image-promoted" class="small-12 medium-12 large-12">
+						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/temp/featured-1000x400.jpg" alt="Esto es un post patrocinado" class="hide-for-small-only"></a>
+						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/temp/featured-640x360.jpg" alt="Esto es un post patrocinado" class="show-for-small-only"></a>
+					</figure>
+				</div>
+				<div id="post-info" class="small-12 columns">
+					<h2><a href="#">Este es un post patrocinado por alguna marca o tienda</a></h2>
+					<div class="author-box">
+						<figure class="avatar">
+							<img src="<?php echo get_template_directory_uri(); ?>/images/temp/avatar-mr-roller.png" alt="Mr.Roller" height="50" width="50">
+						</figure>
+						<div class="author-info">
+							<div class="author-name">Mr. Roller</div>
+							<div class="date-post">8 de Febrero 2015</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- #post-promoted -->
+	<div id="post-list">
+		<div class="row">
+			<div class="small-12 medium-6 large-4 columns">
+				<?php if ( have_posts() ) : ?>
+		    	<?php while ( have_posts() ) : the_post(); global $post; ?>
+				<article class="post">
+					<figure class="post-image">
+						<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-image' ); ?>
+						<a href="<?php the_permalink(); ?>"><img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" height="180" width="290"></a>
+					</figure>
+					<h2 class="post-title border-bottom"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+					<div class="post-footer">
+						<div class="author-name left"><?php the_author(); ?></div>
+						<div class="date-post right"><?php the_time('d \d\e F, Y') ?></div>
+					</div>
+				</article>
+				<?php endwhile; ?>	
+				<?php endif; ?>
+			</div>
+		</div>
+	</div><!-- #post-list -->
 
-		</div><!-- #content -->
-	</section><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -27,66 +27,33 @@
 	<div id="post-list">
 		<div class="row">
 			<div class="small-12 medium-6 large-4 columns">
+				<?php 
+
+				$query = new WP_Query( array( 
+					'posts_per_page' => 6, 
+					'order' => 'DESC',
+				)); 
+
+				?>
+				<?php if ($query->have_posts()) : $slide = 1; ?>
+		    	<?php while ( $query->have_posts() ) : $query->the_post(); global $post; ?>
 				<article class="post">
 					<figure class="post-image">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/temp/post-general.jpg" alt="Maratón por aniversario de Lima #480" height="180" width="290"></a>
+						<div class="count-comments">
+							<span class="icon-comment"></span>
+							<fb:comments-count href="<?php the_permalink(); ?>"></fb:comments-count>
+						</div>
+						<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-image' ); ?>
+						<a href="<?php the_permalink(); ?>"><img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" height="180" width="290"></a>
 					</figure>
-					<h2 class="post-title border-bottom"><a href="#">Maratón por aniversario de Lima #480</a></h2>
+					<h2 class="post-title border-bottom"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					<div class="post-footer">
-						<div class="author-name left">Mr. Roller</div>
-						<div class="date-post right">8 de Febrero 2015</div>
+						<div class="author-name left"><?php the_author(); ?></div>
+						<div class="date-post right"><?php the_time('d \d\e F, Y') ?></div>
 					</div>
 				</article>
-				<article class="post">
-					<figure class="post-image">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/temp/post-general.jpg" alt="Maratón por aniversario de Lima #480" height="180" width="290"></a>
-					</figure>
-					<h2 class="post-title border-bottom"><a href="#">Maratón por aniversario de Lima #480</a></h2>
-					<div class="post-footer">
-						<div class="author-name left">Mr. Roller</div>
-						<div class="date-post right">8 de Febrero 2015</div>
-					</div>
-				</article>
-				<article class="post">
-					<figure class="post-image">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/temp/post-general.jpg" alt="Maratón por aniversario de Lima #480" height="180" width="290"></a>
-					</figure>
-					<h2 class="post-title border-bottom"><a href="#">Maratón por aniversario de Lima #480</a></h2>
-					<div class="post-footer">
-						<div class="author-name left">Mr. Roller</div>
-						<div class="date-post right">8 de Febrero 2015</div>
-					</div>
-				</article>
-				<article class="post">
-					<figure class="post-image">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/temp/post-general.jpg" alt="Maratón por aniversario de Lima #480" height="180" width="290"></a>
-					</figure>
-					<h2 class="post-title border-bottom"><a href="#">Maratón por aniversario de Lima #480</a></h2>
-					<div class="post-footer">
-						<div class="author-name left">Mr. Roller</div>
-						<div class="date-post right">8 de Febrero 2015</div>
-					</div>
-				</article>
-				<article class="post">
-					<figure class="post-image">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/temp/post-general.jpg" alt="Maratón por aniversario de Lima #480" height="180" width="290"></a>
-					</figure>
-					<h2 class="post-title border-bottom"><a href="#">Maratón por aniversario de Lima #480</a></h2>
-					<div class="post-footer">
-						<div class="author-name left">Mr. Roller</div>
-						<div class="date-post right">8 de Febrero 2015</div>
-					</div>
-				</article>
-				<article class="post">
-					<figure class="post-image">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/temp/post-general.jpg" alt="Maratón por aniversario de Lima #480" height="180" width="290"></a>
-					</figure>
-					<h2 class="post-title border-bottom"><a href="#">Maratón por aniversario de Lima #480</a></h2>
-					<div class="post-footer">
-						<div class="author-name left">Mr. Roller</div>
-						<div class="date-post right">8 de Febrero 2015</div>
-					</div>
-				</article>
+				<?php endwhile; ?>	
+				<?php endif; ?>
 			</div>
 		</div>
 	</div><!-- #post-list -->

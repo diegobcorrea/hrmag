@@ -107,8 +107,9 @@ function theme_setup() {
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
-	add_image_size( 'homepage-thumb', 230, 130, true );
-	add_image_size( 'slider-image', 630, 280, true );
+	add_image_size( 'homepage-featured-full', 1000, 400, true );
+	add_image_size( 'homepage-featured-small', 640, 360, true );
+	add_image_size( 'post-image', 580, 360, true );
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 

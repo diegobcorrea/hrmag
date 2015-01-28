@@ -66,6 +66,19 @@ jq(document).ready( function() {
     };
     mobileMenu.init();
 
+
+    jq("#single .single-image img").each(function(){
+        //get height and width (unitless) and divide by 2
+        var hWide = (jq(this).width())/2; //half the image's width
+
+        // attach negative and pixel for CSS rule
+        hWide = '-' + hWide + 'px';
+
+        jq(this).addClass("js-fix").css({
+            "margin-left" : hWide,
+        });
+    });
+
 });
 
 

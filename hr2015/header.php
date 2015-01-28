@@ -4,6 +4,8 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta property="fb:admins" content="{YOUR_FACEBOOK_USER_ID}"/>
+	<meta property="fb:app_id" content="460081534043957"/>
 
 	<?php if (is_single()) : ?>
 	<?php
@@ -59,13 +61,21 @@
 </head>
 
 <body <?php body_class(); ?>> 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=460081534043957&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="content">
 	<header id="top-nav" class="noPadding">
 		<nav class="row">
 			<div class="small-5 medium-5 large-5 columns">
 				<figure class="logo">
-					<img src="<?php echo get_template_directory_uri(); ?>/images/hrlogo-sm-md.png" alt="HR MAG" width="95" height="25">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/hrlogo-sm-md.png" alt="HR MAG" width="95" height="25"></a>
 				</figure>
 			</div>
 			<div id="mobile-button" class="icon-menu right show-for-small-only"></div>
