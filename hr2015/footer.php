@@ -16,7 +16,7 @@
 			<figure class="logo">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/hrlogo-sm-md.png" alt="HR MAG" width="95" height="25">
 			</figure>
-		</div>
+		</div><!-- logo -->
 		<div id="footer-nav" class="small-8 medium-6 large-7 columns">
 			<ul>
 				<li class="hide-for-small"><a href="#">Contacto</a></li>
