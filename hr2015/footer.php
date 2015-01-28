@@ -25,7 +25,7 @@
 				<li class="hide-for-small"><a href="#">Publicidad</a></li>
 				<li><a href="#">Suscríbete</a></li>
 			</ul>
-		</div><!-- #footer-nav -->
+		</div>
 		<div id="footer-redes" class="small-4 medium-3 large-3 columns">
 			<figure class="twitter right">
 				<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="Twitter HRmag" width="35" height="35"></a>
