@@ -27,11 +27,11 @@
 			</ul>
 		</div>
 		<div id="footer-redes" class="small-4 medium-3 large-3 columns">
-			<figure class="facebook">
-				<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="Facebook HRmag" width="35" height="35"></a>
-			</figure>
-			<figure class="twitter">
+			<figure class="twitter right">
 				<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="Twitter HRmag" width="35" height="35"></a>
+			</figure>
+			<figure class="facebook right">
+				<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="Facebook HRmag" width="35" height="35"></a>
 			</figure>
 		</div>
 	</footer>
