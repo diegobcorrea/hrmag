@@ -33,7 +33,7 @@
 			<figure class="facebook right">
 				<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="Facebook HRmag" width="35" height="35"></a>
 			</figure>
-		</div>
+		</div><!-- #footer-redes -->
 	</footer><!-- footer -->
 </div>
 
