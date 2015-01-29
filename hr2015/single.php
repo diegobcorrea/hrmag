@@ -11,13 +11,42 @@
 	    		</div>		
 			</div>
 		</div>
+		<div id="hr-next-previous-posts" class="row navigation" style="display: none;">
+			<div class="nav-box previous hide-for-small medium-6 large-4 columns">
+			<?php $prevPost = get_previous_post(true); if($prevPost): ?>
+			<?php $prevthumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $prevPost->ID) ); ?>
+				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="hr-featured-image hide-for-small">
+					<img src="<?php echo $prevthumbnail[0] ?>" alt="<?php echo get_the_title( $prevPost->ID ); ?>">
+				</a>
+				<span class="next-prev-title-span"><a href="<?php echo get_permalink( $prevPost->ID ); ?>">Ver anterior</a></span>
+				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="next-prev-title"><?php echo get_the_title( $prevPost->ID ); ?></a>
+			<?php else: ?>
+				<span class="next-prev-title-span">No hay artículos antiguos</span>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="next-prev-title">Volver al inicio</a>
+			<?php endif; ?>
+			</div>
+
+			<div class="nav-box next small-12 medium-6 large-4 columns">
+			<?php $nextPost = get_next_post(true); if($nextPost): ?>
+			<?php $nextthumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $nextPost->ID) ); ?>
+				<a href="<?php echo get_permalink( $nextPost->ID ); ?>" class="hr-featured-image hide-for-small">
+					<img src="<?php echo $nextthumbnail[0] ?>" alt="<?php echo get_the_title( $nextPost->ID ); ?>">
+				</a>
+				<span class="next-prev-title-span"><a href="<?php echo get_permalink( $nextPost->ID ); ?>">Ver siguiente</a></span>
+				<a href="<?php echo get_permalink( $nextPost->ID ); ?>" class="next-prev-title"><?php echo get_the_title( $nextPost->ID ); ?></a>
+			<?php else: ?>
+				<span class="next-prev-title-span">No hay artículos nuevos</span>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="next-prev-title">Volver al inicio</a>
+			<?php endif; ?>
+			</div>
+		</div>
 
 		<div class="row small-collapse medium-collapse large-collapse">
 			<div class="small-12 medium-12 large-12 columns">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<figure class="single-image">
 					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-image' ); ?>
-					<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>">
+					<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" class="js-fix">
 					<h1 class="single-title"><?php the_title(); ?></h1>
 				</figure>
 				<div class="row">
@@ -38,7 +67,7 @@
 						    </div>
 						</div>
 						<div class="single-info">
-							<div class="single-author-avatar"></div>
+							<div class="single-author-avatar"><?php echo get_wp_user_avatar(); ?></div>
 							<div class="single-author-name"><?php the_author(); ?></div>
 							<div class="single-post-date"><?php the_time('d \d\e F, Y') ?></div>
 						</div>

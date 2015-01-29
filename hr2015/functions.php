@@ -110,6 +110,7 @@ function theme_setup() {
 	add_image_size( 'homepage-featured-full', 1000, 400, true );
 	add_image_size( 'homepage-featured-small', 640, 360, true );
 	add_image_size( 'post-image', 580, 360, true );
+	add_image_size( 'page-image', 1000, 320, true );
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
@@ -152,19 +153,11 @@ function theme_scripts_styles() {
 	global $wp_styles;
 
 	/*
-	 * Adds JavaScript to pages with the comment form to support
-	 * sites with threaded comments (when in use).
-	 */
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
-		wp_enqueue_script( 'comment-reply' );
-
-	/*
 	 * Adds JavaScript for handling the navigation menu hide-and-show behavior.
 	 */
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('theme-js-prefixfree', get_template_directory_uri() . '/js/lib/prefixfree.min.js');
 	wp_enqueue_script('theme-js-hammer', get_template_directory_uri() . '/js/lib/hammer.js');
-	wp_enqueue_script('theme-js-foundation', get_template_directory_uri() . '/js/foundation.min.js');
 	wp_enqueue_script('theme-js-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js');
 	wp_enqueue_script('theme-js-validate', get_template_directory_uri() . '/js/jquery.validate.js');
 

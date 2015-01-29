@@ -18,35 +18,20 @@
 			</figure>
 		</div>
 		<div id="footer-nav" class="small-8 medium-6 large-7 columns">
-			<ul>
-				<li class="hide-for-small"><a href="#">Contacto</a></li>
-				<li class="hide-for-small"><a href="#">Equipo HRMag</a></li>
-				<li class="hide-for-small"><a href="#">Únete al equipo</a></li>
-				<li class="hide-for-small"><a href="#">Publicidad</a></li>
-				<li><a href="#test">Suscríbete</a></li>
-			</ul>
+			<?php wp_nav_menu( array( 'menu' => '1', 'container_class' => '' )); ?>
 		</div>
 		<div id="footer-redes" class="small-4 medium-3 large-2 columns">
 			<figure class="twitter right">
-				<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="Twitter HRmag" width="35" height="35"></a>
+				<a href="https://www.facebook.com/heyroller" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="Twitter HRmag" width="35" height="35"></a>
 			</figure>
 			<figure class="facebook right">
-				<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="Facebook HRmag" width="35" height="35"></a>
+				<a href="https://twitter.com/hrollermag" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="Facebook HRmag" width="35" height="35"></a>
 			</figure>
 		</div>
 	</footer><!-- End footer -->
 </div>
 
 <?php wp_footer(); ?>
-
-<script type="text/javascript">
-var jq = jQuery;
-jq(document).foundation({
-	"magellan-expedition": {
-		active_class: 'active',
-	}
-});
-</script>
 <script src="https://apis.google.com/js/platform.js" async defer>{lang: 'es-419'}</script>
 
 </body>

@@ -1,17 +1,16 @@
-// AJAX Functions
-var jq = jQuery;
-
 var hrWindow = jQuery(window),
     hrWindowHeight = hrWindow.height(),
     hrWindowWidth = hrWindow.width(),
     hrHTMLBody = jQuery('html, body');
 
-jq(document).ready( function() {
+jQuery(document).ready( function() {
+
+    var test = jQuery('footer');
 
     var scroller={
         scrollTop:function(){
-            var offset = jq(window).scrollTop(),
-            $header = jq('#top-nav');
+            var offset = jQuery(window).scrollTop(),
+            $header = jQuery('#top-nav');
 
             if(offset>42){
                 $header.addClass('scrolled');
@@ -21,7 +20,7 @@ jq(document).ready( function() {
             }
         },
         listener:function(){
-            jq(window).on('scroll',scroller.scrollTop);
+            jQuery(window).on('scroll',scroller.scrollTop);
         },
         init:function(){
             scroller.listener();
@@ -30,56 +29,30 @@ jq(document).ready( function() {
 
     scroller.init();
 
-    var $mobileButton = jq('#mobile-button'),
-        $mobileNav = jq('.main_menu'),
-        $content = jq('.content'),
-        $topnav = jq('#top-nav');
-    var mobileMenu = {
-        init: function() {
-            mobileMenu.listener();
-        },
-        listener : function() {
-            $mobileButton.on('click', mobileMenu.toggleMenu);
-            Hammer(document).on('swipeleft', mobileMenu.swipeLeft);
-            Hammer(document).on('swiperight', mobileMenu.swipeRight);
-        },
-        toggleMenu : function() {
-            $mobileNav.toggleClass('show-menu');
-            $mobileNav.toggleClass('hide-menu');
-            $content.toggleClass('push-left');
-            $topnav.toggleClass('push-left');
-        },
-        openMenu : function() {
-            $mobileNav.addClass('show-menu');
-            $mobileNav.removeClass('hide-menu');
-            $content.addClass('push-left');
-            $topnav.toggleClass('push-left');
-        },
-        closeMenu : function() {
-            $mobileNav.removeClass('show-menu');
-            $mobileNav.addClass('hide-menu');
-            $content.removeClass('push-left');
-            $topnav.toggleClass('push-left');
-        },
-        swipeLeft : function() {
-            mobileMenu.openMenu();
-        },
-        swipeRight : function() {
-            mobileMenu.closeMenu();
-        }
-    };
-    mobileMenu.init();
-
-
-    jq("#single .single-image img").each(function(){
+    jQuery("img.js-fix").each(function(){
         //get height and width (unitless) and divide by 2
-        var hWide = (jq(this).width())/2; //half the image's width
+        var hWide = (jQuery(this).width())/2; //half the image's width
 
         // attach negative and pixel for CSS rule
         hWide = '-' + hWide + 'px';
 
-        jq(this).addClass("js-fix").css({
+        jQuery(this).css({
             "margin-left" : hWide,
+        });
+    });
+
+    jQuery(".fixed-div img.variable").each(function(){
+        //get height and width (unitless) and divide by 2
+        var hWide = (jQuery(this).width())/2; //half the image's width
+        var hTall = (jQuery(this).height())/2; //half the image's height, etc.
+
+        // attach negative and pixel for CSS rule
+        hWide = '-' + hWide + 'px';
+        hTall = '-' + hTall + 'px';
+
+        jQuery(this).css({
+            "margin-left" : hWide,
+            "margin-top" : hTall
         });
     });
 
@@ -87,10 +60,11 @@ jq(document).ready( function() {
 
 hrWindow.load(function() {
 
+    hrTopnav = jQuery('#top-nav'),
     hrSingle = jQuery('#single-main'),
     hrSingleContent = hrSingle.find('.single-content'),
     hrReadProgress= jQuery('#hr-read-progress'),
-    hrNextPrevPosts = jq('#hr-next-previous-posts'),
+    hrNextPrevPosts = jQuery('#hr-next-previous-posts'),
     hrProgressBar = jQuery('#hr-progress-bar'),
     hrProgressBarWidth = jQuery('#hr-progress-bar .progress'),
     hrProgressBarPercent = jQuery('#hr-read-progress-percent');
@@ -123,18 +97,19 @@ hrWindow.load(function() {
             hrProgressBarWidth.css({'width': percentage + '%'}).find('.value').text(progressText);
             hrProgressBarPercent.html( percentage + '%' );
             hrNextPrevPosts.hide();
+            hrTopnav.hide();
             hrReadProgress.show();
-
-            console.log( percentage + '%');
 
         } else if ( hrProgressScroll > 101 ) {
 
             hrNextPrevPosts.show();
+            hrTopnav.hide();
             hrReadProgress.hide();
 
         } else if ( hrProgressScroll <= 0 ) {
 
             hrReadProgress.hide();
+            hrTopnav.show();
 
         }
 
@@ -147,6 +122,47 @@ hrWindow.load(function() {
         hrNavBarAni();
 
     });
+
+    var mobileButton = jQuery('#mobile-button'),
+        mobileNav = jQuery('.main_menu'),
+        content = jQuery('.content');
+
+    var mobileMenu = {
+        init: function() {
+            mobileMenu.listener();
+        },
+        listener : function() {
+            mobileButton.on('click', mobileMenu.toggleMenu);
+            Hammer(document).on('swipeleft', mobileMenu.swipeLeft);
+            Hammer(document).on('swiperight', mobileMenu.swipeRight);
+        },
+        toggleMenu : function() {
+            mobileNav.toggleClass('show-menu');
+            mobileNav.toggleClass('hide-menu');
+            content.toggleClass('push-left');
+            hrTopnav.toggleClass('push-left');
+        },
+        openMenu : function() {
+            mobileNav.addClass('show-menu');
+            mobileNav.removeClass('hide-menu');
+            content.addClass('push-left');
+            hrTopnav.toggleClass('push-left');
+        },
+        closeMenu : function() {
+            mobileNav.removeClass('show-menu');
+            mobileNav.addClass('hide-menu');
+            content.removeClass('push-left');
+            hrTopnav.toggleClass('push-left');
+        },
+        swipeLeft : function() {
+            mobileMenu.openMenu();
+        },
+        swipeRight : function() {
+            mobileMenu.closeMenu();
+        }
+    };
+    mobileMenu.init();
+
 
 });
 
