@@ -50,7 +50,7 @@ if matchObj:
 	header['To'] = toaddrs
 
 	# Type message
-	message = MIMEText(message.encode('utf-8'), 'html', 'utf-8') 
+	message = MIMEText(message, 'html', 'utf-8') 
 	header.attach(message)
 
 	# Send mail and close conection
