@@ -175,7 +175,7 @@ ul
 			.date-post
 				color #416AB2
 
-#single 
+#single-main
 	margin-top 42px
 	overflow hidden
 	position relative
@@ -200,13 +200,22 @@ ul
 			width 100%
 	.single-content
 		font-size 1.8em
-		margin 0.7em 0
+		padding 1.5em 0
+	.single-social
+		overflow hidden
+		padding-bottom 4em
+		text-align center
+		.fb-box,
+		.twitter-box,
+		.gplus-box
+			display inline-block
+			vertical-align top
 	.single-info
 		border-bottom 1px solid #919191
 		border-top 1px solid #919191
 		font-size 1.8em
 		margin-bottom 0.7em
-		padding 1.2em 0
+		padding 2em 0
 		position relative
 		text-align center
 		&:before
@@ -226,6 +235,45 @@ ul
 		.single-post-date
 			color hr_blue
 			font-size 1rem
+	#hr-read-progress
+		background-color rgba(0,0,0,.7)
+		display table
+		height 42px
+		position fixed
+		text-align left
+		top 42px
+		width 100% 
+		z-index 9
+		#hr-progress-bar
+			background #edeff0
+			position relative
+			overflow hidden
+			height 10px
+			border-radius 5px
+			box-shadow 0 1px 0 0 rgba(0,0,0,0.05) inset
+			margin 0 0 10px 0
+			width 100%
+			z-index 2
+			.progress
+				background-color hr_blue
+				font-size 0
+				height 10px
+				line-height 16px
+				transition width linear 0.1s
+				.value
+					display none
+		.hr-text
+			font-variant-numeric lining-nums
+			font-feature-settings "lnum" 1
+			color #fff
+			font-weight bold
+			letter-spacing 2px
+			position relative
+			text-align center
+			text-transform uppercase
+			vertical-align middle
+			width 100%
+			z-index 2
 
 footer
 	background-color rgba(0,0,0,1)

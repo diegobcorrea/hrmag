@@ -1,6 +1,10 @@
 // AJAX Functions
 var jq = jQuery;
-var images = "http://maspormenos.com.pe/pichangatottus/wp-content/themes/tottus/images/";
+
+var hrWindow = jQuery(window),
+    hrWindowHeight = hrWindow.height(),
+    hrWindowWidth = hrWindow.width(),
+    hrHTMLBody = jQuery('html, body');
 
 jq(document).ready( function() {
 
@@ -81,6 +85,72 @@ jq(document).ready( function() {
 
 });
 
+hrWindow.load(function() {
+
+    hrSingle = jQuery('#single-main'),
+    hrSingleContent = hrSingle.find('.single-content'),
+    hrReadProgress= jQuery('#hr-read-progress'),
+    hrNextPrevPosts = jq('#hr-next-previous-posts'),
+    hrProgressBar = jQuery('#hr-progress-bar'),
+    hrProgressBarWidth = jQuery('#hr-progress-bar .progress'),
+    hrProgressBarPercent = jQuery('#hr-read-progress-percent');
+
+    var hrWindowScrollTop = hrWindow.scrollTop();
+
+    if ( hrSingleContent.length > 0 ) {
+        var hrTopPostContent = ( hrSingleContent.offset().top ) / 1.2,
+            hrBottomPostContent = hrSingleContent.outerHeight(),
+            hrBottomPostContentAndTop = hrTopPostContent * 2 + hrBottomPostContent;
+    }
+
+    function hrNavBarAni(){
+
+        hrWindowScrollTop = hrWindow.scrollTop();
+        hrProgressScroll = ( hrWindowScrollTop - ( hrTopPostContent  ) ) / ( hrBottomPostContentAndTop - ( hrTopPostContent * 2 ) ) * 100;
+
+        if ( ( hrProgressScroll < 101 ) && ( hrProgressScroll > 0 ) ) {
+
+            var percentage = Math.floor( hrProgressScroll );
+
+            var progressText = (percentage == 0 || percentage == 100) ? '' : percentage + '%';
+            if (percentage == 0) {
+                progressText == '';
+            } else if (percentage == 100) {
+                progressText = '';
+            } else {
+                progressText = percentage + '%';
+            }
+            hrProgressBarWidth.css({'width': percentage + '%'}).find('.value').text(progressText);
+            hrProgressBarPercent.html( percentage + '%' );
+            hrNextPrevPosts.hide();
+            hrReadProgress.show();
+
+            console.log( percentage + '%');
+
+        } else if ( hrProgressScroll > 101 ) {
+
+            hrNextPrevPosts.show();
+            hrReadProgress.hide();
+
+        } else if ( hrProgressScroll <= 0 ) {
+
+            hrReadProgress.hide();
+
+        }
+
+        console.log(hrProgressScroll);
+
+    }
+
+    hrNavBarAni();
+
+    hrWindow.scroll( function() {
+
+        hrNavBarAni();
+
+    });
+
+});
 
 function remove_accent(str){
     var charMap = {

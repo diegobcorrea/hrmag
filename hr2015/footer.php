@@ -26,7 +26,7 @@
 				<li><a href="#test">Suscríbete</a></li>
 			</ul>
 		</div>
-		<div id="footer-redes" class="small-4 medium-3 large-3 columns">
+		<div id="footer-redes" class="small-4 medium-3 large-2 columns">
 			<figure class="twitter right">
 				<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="Twitter HRmag" width="35" height="35"></a>
 			</figure>
@@ -47,6 +47,7 @@ jq(document).foundation({
 	}
 });
 </script>
+<script src="https://apis.google.com/js/platform.js" async defer>{lang: 'es-419'}</script>
 
 </body>
 </html>

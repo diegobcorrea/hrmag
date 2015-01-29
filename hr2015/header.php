@@ -5,7 +5,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta property="fb:admins" content="{YOUR_FACEBOOK_USER_ID}"/>
-	<meta property="fb:app_id" content="460081534043957"/>
+	<meta property="fb:app_id" content="704086572939854"/>
 
 	<?php if (is_single()) : ?>
 	<?php
@@ -66,7 +66,7 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=460081534043957&version=v2.0";
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=704086572939854&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
