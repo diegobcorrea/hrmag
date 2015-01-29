@@ -138,8 +138,6 @@ hrWindow.load(function() {
 
         }
 
-        console.log(hrProgressScroll);
-
     }
 
     hrNavBarAni();
