@@ -27,8 +27,6 @@ jq(document).ready( function() {
         }
     };
 
-    var hammernew = Hammer( jq('body') );
-
     scroller.init();
 
     var $mobileButton = jq('#mobile-button'),
@@ -44,6 +42,8 @@ jq(document).ready( function() {
         },
         listener : function() {
             $mobileButton.on('click', mobileMenu.toggleMenu);
+            Hammer(document).on('panleft', mobileMenu.panleft);
+            Hammer(document).on('panright', mobileMenu.panright);
         },
         toggleMenu : function() {
             $mobileNav.toggleClass('show-menu');
