@@ -156,12 +156,12 @@ function theme_scripts_styles() {
 	 * Adds JavaScript for handling the navigation menu hide-and-show behavior.
 	 */
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('theme-js-prefixfree', get_template_directory_uri() . '/js/lib/prefixfree.min.js', '' , '', true);
-	wp_enqueue_script('theme-js-hammer', get_template_directory_uri() . '/js/lib/hammer.js', '' , '', true);
-	wp_enqueue_script('theme-js-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js', '' , '', true);
-	wp_enqueue_script('theme-js-validate', get_template_directory_uri() . '/js/jquery.validate.js', '' , '', true);
+	wp_enqueue_script('theme-js-prefixfree', get_template_directory_uri() . '/js/lib/prefixfree.min.js');
+	wp_enqueue_script('theme-js-hammer', get_template_directory_uri() . '/js/lib/hammer.js');
+	wp_enqueue_script('theme-js-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js');
+	wp_enqueue_script('theme-js-validate', get_template_directory_uri() . '/js/jquery.validate.js');
 
-	wp_enqueue_script('theme-js-global', get_template_directory_uri() . '/js/global.js', '' , '', true);
+	wp_enqueue_script('theme-js-global', get_template_directory_uri() . '/js/global.js');
 
     wp_localize_script( 'theme-js-global', 'apfajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
