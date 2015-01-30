@@ -42,8 +42,8 @@ jq(document).ready( function() {
         },
         listener : function() {
             $mobileButton.on('click', mobileMenu.toggleMenu);
-            Hammer(document).on('panleft', mobileMenu.panleft);
-            Hammer(document).on('panright', mobileMenu.panright);
+            Hammer(document).on('swipeleft', mobileMenu.swipeLeft);
+            Hammer(document).on('swiperight', mobileMenu.swipeRight);
         },
         toggleMenu : function() {
             $mobileNav.toggleClass('show-menu');
@@ -63,10 +63,10 @@ jq(document).ready( function() {
             $content.removeClass('push-left');
             $topnav.toggleClass('push-left');
         },
-        panleft : function() {
+        swipeLeft : function() {
             mobileMenu.openMenu();
         },
-        panright : function() {
+        swipeRight : function() {
             mobileMenu.closeMenu();
         }
     };
