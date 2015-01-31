@@ -70,18 +70,19 @@ ul
 			font-size 32px
 			padding .1em 10px
 			width 50px
-		.main_menu.hide-menu
+		.main_menu
 			background-color #212121
 			bottom: 0
 			height: 100%
 			overflow: hidden
 			position: fixed
-			right: -272px
 			top: 0
 			z-index 2000
 			width 272px
-		.main_menu.show-menu
-			right 0
+			&.hide-menu
+				right: -272px
+			&.show-menu
+				right 0
 			li
 				border-bottom 1px solid #333333
 				float left
