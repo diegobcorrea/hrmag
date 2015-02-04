@@ -12,8 +12,8 @@ define('THEME_FRAMEWORK', get_template_directory() . '/lib/');
 define("THEME_ADMIN", THEME_FRAMEWORK . '/admin');
 define("THEME_IMAGES_URL", get_template_directory_uri(). '/lib/images/');
 define("THEME_FUNCTIONS_PATH", TEMPLATEPATH . '/lib/functions/');
-define("THEME_CSS_URL", get_template_directory_uri() . '/lib/css/');
-define("THEME_SCRIPT_URL", get_template_directory_uri() . '/lib/js/');
+define("THEME_CSS_URL", get_template_directory_uri() . '/lib/css/admin/');
+define("THEME_SCRIPT_URL", get_template_directory_uri() . '/lib/js/admin/');
 define("THEME_UTILS_URL", get_template_directory_uri() . '/lib/utils/');
 define("THEME_TIMTHUMB_URL", THEME_UTILS_URL . 'timthumb.php');
 
@@ -63,24 +63,12 @@ if(is_admin()){
 
 }
 
-//------ Twitter OAuth ------//
-require_once ('includes/twitteroauth.php');
-
-//------ Load Widgets ------//
-require_once ('includes/widgets/datetime-widget.php');
-require_once ('includes/widgets/twitter-widget.php');
-require_once ('includes/widgets/recent-posts-widget.php');
-require_once ('includes/widgets/select-pages-widget.php');
-
 //------ THEME OPTIONS PANEL ------//
 require_once('theme-options/options-init.php');
 
-require_once (THEME_FUNCTIONS_PATH.'type-pichanga.php'); 
 require_once (THEME_FUNCTIONS_PATH.'meta.php');  //adds the custom meta fields to the posts and pages
 
 function theme_setup() {
-
-	load_theme_textdomain( 'theme', get_template_directory() . '/languages' );
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
@@ -96,14 +84,6 @@ function theme_setup() {
 	register_nav_menu( 'top', __( 'Top Menu', 'theme' ) );
 	register_nav_menu( 'left', __( 'Left Menu', 'theme' ) );
 
-	/*
-	 * This theme supports custom background color and image, and here
-	 * we also set up the default background color.
-	 */
-	add_theme_support( 'custom-background', array(
-		'default-color' => 'e6e6e6',
-	) );
-
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
@@ -114,41 +94,6 @@ function theme_setup() {
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
-/**
- * Add intermediate image sizes to media gallery modal dialog
- */
- 
-function image_sizes_attachment_fields_to_edit( $form_fields, $post ) {
-    if ( !is_array( $imagedata = wp_get_attachment_metadata( $post->ID ) ) )
-        return $form_fields;
- 
-    if ( is_array($imagedata['sizes']) ) :
-        foreach ( $imagedata['sizes'] as $size => $val ) :
-            if ( $size != 'thumbnail' && $size != 'medium' && $size != 'large' ) :
-                $css_id = "image-size-{$size}-{$post->ID}";
-                $html .= '<div class="image-size-item"><input type="radio" name="attachments[' . $post->ID . '][image-size]" id="' . $css_id . '" value="' . $size . '" />';
-                $html .= '<label for="' . $css_id . '">' . $size . '</label>';
-                $html .= ' <label for="' . $css_id . '" class="help">' . sprintf( __("(%d&nbsp;&times;&nbsp;%d)"), $val['width'], $val['height'] ). '</label>';
-                $html .= '</div>';
-            endif;
-        endforeach;
-    endif;
- 
-    $form_fields['image-size']['html'] .= $html;
-    return $form_fields;
-}
-add_filter( 'attachment_fields_to_edit', 'image_sizes_attachment_fields_to_edit', 100, 2 );
-
-/**
- * Adds support for a custom header image.
- */
-require( get_template_directory() . '/includes/custom-header.php' );
-
-/**
- * Enqueues scripts and styles for front-end.
- *
- * @since Twenty Twelve 1.0
- */
 function theme_scripts_styles() {
 	global $wp_styles;
 
@@ -156,12 +101,12 @@ function theme_scripts_styles() {
 	 * Adds JavaScript for handling the navigation menu hide-and-show behavior.
 	 */
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('theme-js-prefixfree', get_template_directory_uri() . '/js/lib/prefixfree.min.js');
-	wp_enqueue_script('theme-js-hammer', get_template_directory_uri() . '/js/lib/hammer.js');
-	wp_enqueue_script('theme-js-modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js');
-	wp_enqueue_script('theme-js-validate', get_template_directory_uri() . '/js/jquery.validate.js');
+	wp_enqueue_script('theme-js-prefixfree', get_template_directory_uri() . '/lib/js/site/prefixfree.min.js');
+	wp_enqueue_script('theme-js-hammer', get_template_directory_uri() . '/lib/js/site/hammer.js');
+	wp_enqueue_script('theme-js-modernizr', get_template_directory_uri() . '/lib/js/site/vendor/modernizr.js');
+	wp_enqueue_script('theme-js-validate', get_template_directory_uri() . '/lib/js/site/jquery.validate.js');
 
-	wp_enqueue_script('theme-js-global', get_template_directory_uri() . '/js/global.js');
+	wp_enqueue_script('theme-js-global', get_template_directory_uri() . '/lib/js/site/global.js');
 
     wp_localize_script( 'theme-js-global', 'apfajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
@@ -172,7 +117,7 @@ function theme_scripts_styles() {
 	
 	wp_enqueue_style( 'theme-style', get_stylesheet_uri() );
     // wp_enqueue_style( 'googleFonts');
-	wp_enqueue_style( 'theme-base', get_template_directory_uri() . '/css/hrstyle.css', array( 'theme-style' ), '20131002' );
+	wp_enqueue_style( 'theme-base', get_template_directory_uri() . '/lib/css/site/hrstyle.css', array( 'theme-style' ), '20131002' );
 
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts_styles' );
@@ -198,73 +143,6 @@ function theme_wp_title( $title, $sep ) {
 	return $title;
 }
 add_filter( 'wp_title', 'theme_wp_title', 10, 2 );
-
-function theme_page_menu_args( $args ) {
-	if ( ! isset( $args['show_home'] ) )
-		$args['show_home'] = true;
-	return $args;
-}
-add_filter( 'wp_page_menu_args', 'theme_page_menu_args' );
-
-function theme_widgets_init() {
-	register_sidebar( array(
-		'name' => __( 'Main Sidebar', 'theme' ),
-		'id' => 'sidebar-1',
-		'description' => __( 'Appears on posts and pages except the optional Front Page template, which has its own widgets', 'theme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'First Front Page Widget Area', 'theme' ),
-		'id' => 'sidebar-2',
-		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'theme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Second Front Page Widget Area', 'theme' ),
-		'id' => 'sidebar-3',
-		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'theme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Main Area', 'theme' ),
-		'id' => 'main-area',
-		'description' => __( 'Appears on front page area - Static Front Page', 'theme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title" style="display:none">',
-		'after_title' => '</h3>',
-	) );
-}
-add_action( 'widgets_init', 'theme_widgets_init' );
-
-if ( ! function_exists( 'theme_content_nav' ) ) :
-
-function theme_content_nav( $html_id ) {
-	global $wp_query;
-
-	$html_id = esc_attr( $html_id );
-
-	if ( $wp_query->max_num_pages > 1 ) : ?>
-		<nav id="<?php  echo $html_id; ?>" class="navigation" role="navigation">
-			<h3 class="assistive-text"><?php  _e( 'Post navigation', 'theme' ); ?></h3>
-			<div class="nav-previous alignleft"><?php  next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'theme' ) ); ?></div>
-			<div class="nav-next alignright"><?php  previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'theme' ) ); ?></div>
-		</nav><!-- #<?php  echo $html_id; ?> .navigation -->
-	<?php  endif;
-}
-endif;
 
 if ( ! function_exists( 'theme_comment' ) ) :
 
@@ -361,157 +239,3 @@ function theme_entry_meta() {
 	);
 }
 endif;
-
-function theme_customize_preview_js() {
-	wp_enqueue_script( 'theme-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
-}
-add_action( 'customize_preview_init', 'theme_customize_preview_js' );
-
-function my_theme_add_editor_styles() {
-    add_editor_style( 'custom-editor-style.css' );
-}
-add_action( 'init', 'my_theme_add_editor_styles' );
-
-function in_array_r($needle, $haystack, $strict = false) {
-    foreach ($haystack as $item) {
-        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && in_array_r($needle, $item, $strict))) {
-            return true;
-        }
-    }
-
-    return false;
-};
-
-// ADD POST FRONT SITE
-function apf_addpost() {
-    $results = '';
- 
-    $name 		= $_POST['name'];
-    $lastname 	= $_POST['lastname'];
-    $email 		= $_POST['email'];
-    $city 		= $_POST['city'];
-    $phone 		= $_POST['phone'];
-    $dni 		= $_POST['dni'];
-    $team 		= $_POST['team'];
-    $videoID 	= $_POST['videoID'];
-	$videoType 	= $_POST['videoType'];
-	$videoImage = $_POST['videoImage'];
- 
-    $post_id = wp_insert_post( array(
-        'post_title'        => $dni,
-        'post_status'       => 'publish',
-        'post_type'       	=> 'fichas'
-    ) );
-
-    update_post_meta($post_id, 'name_value', $name);
-    update_post_meta($post_id, 'lastname_value', $lastname);
-    update_post_meta($post_id, 'email_value', $email);
-    update_post_meta($post_id, 'city_value', $city);
-    update_post_meta($post_id, 'phone_value', $phone);
-    update_post_meta($post_id, 'dni_value', $dni);
-    update_post_meta($post_id, 'team_value', $team);
-    update_post_meta($post_id, 'video_type_value', $videoType);
-    update_post_meta($post_id, 'video_id_value', $videoID);
-    update_post_meta($post_id, 'video_image_value', $videoImage);
-
-    $permalink = get_permalink( $post_id );
- 
-    if ( $post_id != 0 )
-    {
-        $results = $permalink;
-    }
-    else {
-        $results = '*Error occurred while adding the post';
-    }
-    // Return the String
-    die($results);
-}
-add_action( 'wp_ajax_nopriv_apf_addpost', 'apf_addpost' );
-add_action( 'wp_ajax_apf_addpost', 'apf_addpost' );
-
-// ADD POST FRONT SITE
-function show_video() {
-    $output = '';
- 
-    $postID 		= $_POST['postID'];
-
-	$name 			= get_post_meta($postID, 'name_value', true);
-	$lastname 		= get_post_meta($postID, 'lastname_value', true);
-	$team 			= get_post_meta($postID, 'team_value', true);
-	$video_type 	= get_post_meta($postID, 'video_type_value', true);
-	$video_id 		= get_post_meta($postID, 'video_id_value', true);
-	$imageShare 	= get_post_meta($postID, 'video_image_value', true);
-	$votes 			= get_post_meta($postID, 'votes_value', true);
-	$position 		= get_post_meta($postID, 'position_value', true);
-	$dni 			= get_post_meta($postID, 'dni_value', true);
-
-	$permalink 		= get_permalink( $postID );
-
-	if($votes == '') $votes = '0';
-
-	switch ($team) {
-	    case 'peru':
-	        $teamName = 'Perú';
-	        break;
-	    case 'brasil':
-	        $teamName = 'Brasil';
-	        break;
-	    case 'spain':
-	        $teamName = 'España';
-	        break;
-	    case 'colombia':
-	        $teamName = 'Colombia';
-	        break;
-	    case 'holand':
-	        $teamName = 'Holanda';
-	        break;
-	    case 'germany':
-	        $teamName = 'Alemania';
-	        break;
-	    case 'italy':
-	        $teamName = 'Italia';
-	        break;
-	    case 'argentina':
-	        $teamName = 'Argentina';
-	        break;
-	}
-
-	$replacement = "102.mp4";
-
-	if( $video_type == "instagram" ) $instavid = substr($imageShare, 0, -5).$replacement;
-
-	if( $video_type == "youtube" ) : 
-		$video = '<iframe id="popup-youtube-player" width="434" height="234" src="//www.youtube.com/embed/' . $video_id .'?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen="true" allowscriptaccess="always"></iframe>';
-	elseif( $video_type == "vimeo" ) :
-		$video = '<iframe id="vimeo-player" src="//player.vimeo.com/video/' . $video_id .'?api=1" width="434" height="234" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
-	else:
-		$video = '<video width="320" height="234" controls><source src="' . $instavid .'" type="video/mp4"><object data="' . $instavid .'" width="320" height="202"></object></video>';
-	endif;
-
-	//$videoFrame = '<div class="videoThumbPreview"><div class="share-video-overlay" id="share-video-overlay"><iframe src="'. get_stylesheet_directory_uri() . '/fb_likebutton.php?postID='. $postID .'&url='. $permalink .'&num= '. $dni .'" width="75" height="20" frameborder="0" scrolling="no" id="iframe"></iframe><div class="backInfo"></div></div>'. $video .'</div>';
-	$videoFrame = '<div class="videoThumbPreview"><div class="share-video-overlay" id="share-video-overlay"><div class="backInfo"></div></div>'. $video .'</div>';
-
-	$output['screen'] = "http://maspormenos.com.pe/pichangatottus/wp-content/themes/tottus/images/screen/s-".$team.".jpg";
-	$output['name'] = $name . ' ' . $lastname;
-	$output['votes'] = $votes;
-	$output['image'] = $imageShare;
-	$output['team'] = $teamName;
-	//$output['footer'] = '<div class="playerFooter"><iframe src="'. get_stylesheet_directory_uri() . '/fb_likebutton.php?postID='. $postID .'&url='. $permalink .'&num= '. $dni .'" width="75" height="20" frameborder="0" scrolling="no" id="iframe"></iframe></div>';
-	$output['footer'] = '<div class="playerFooter"></div>';
-	$output['video'] = $videoFrame;
-	$output['type'] = $video_type;
-
-    if ( $postID != '' )
-    {
-        $output;
-    }
-    else {
-        $output = '*Error occurred while adding the post';
-    }
-    // Return the String
-    echo json_encode($output);
-
-    exit();
-}
-add_action( 'wp_ajax_nopriv_show_video', 'show_video' );
-add_action( 'wp_ajax_show_video', 'show_video' );

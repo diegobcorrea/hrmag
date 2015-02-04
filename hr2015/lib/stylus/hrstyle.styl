@@ -64,37 +64,11 @@ ul
 				overflow hidden
 				a
 					float left
-					height 2.6em
 		#mobile-button
 			cursor pointer
 			font-size 32px
 			padding .1em 10px
 			width 50px
-		.main_menu
-			background-color #212121
-			bottom: 0
-			height: 100%
-			overflow: hidden
-			position: fixed
-			top: 0
-			z-index 2000
-			width 272px
-			&.hide-menu
-				right: -272px
-			&.show-menu
-				right 0
-			li
-				border-bottom 1px solid #333333
-				float left
-				text-align center
-				width 100%
-				a
-					color #fff
-					height 1em
-					line-height 1em
-					margin 1em 0
-					width 100%
-
 
 #post-promoted
 	margin-top 42px
@@ -112,37 +86,39 @@ ul
 			color #fff
 			font-size 1.5em
 			margin 0
-	#image-promoted
-		background-color #333
-	#post-info
-		background-color rgba(75,75,75,.7)
+
+#image-promoted
+	background-color #333
+
+#post-info
+	background-color rgba(75,75,75,.7)
+	color #fff
+	padding-bottom .8em
+	h2
 		color #fff
-		padding-bottom .8em
-		h2
+		font-size 1.6em
+		font-weight 700
+		margin-top 0
+		padding-top .4em
+		a
 			color #fff
-			font-size 1.6em
-			font-weight 700
-			margin-top 0
-			padding-top .4em
-			a
-				color #fff
-		.author-box
-			overflow hidden
-			padding-top .5em
-			.avatar
-				float left
-				margin-right: 0.5em
-				width auto
-				img
-					border-radius 50%
-			.author-info
-				float left
-				.author-name
-					font-size 1.6em
-					font-weight 400
-					line-height 1em
-				.date-post
-					font-size 1em
+	.author-box
+		overflow hidden
+		padding-top .5em
+		.avatar
+			float left
+			margin-right: 0.5em
+			width auto
+			img
+				border-radius 50%
+		.author-info
+			float left
+			.author-name
+				font-size 1.6em
+				font-weight 400
+				line-height 1em
+			.date-post
+				font-size 1em
 
 #post-list
 	margin-top 1em
@@ -187,139 +163,142 @@ ul
 	margin-top 42px
 	overflow hidden
 	position relative
-	.single-image
+.single-image
+	height 400px
+	position relative
+	img
 		height 400px
-		position relative
-		img
-			height 400px
-			position absolute
-			top 0
-			max-width: 650px;
-		h1
-			background-color rgba(75,75,75,.7)
-			bottom 0
-			color #fff
-			font-size 1.8em
-			left 0 
-			margin 0
-			padding .5em .5em
-			position absolute
-			text-align center
-			width 100%
-	.single-content
+		position absolute
+		top 0
+		max-width: 650px;
+	h1
+		background-color rgba(75,75,75,.7)
+		bottom 0
+		color #fff
 		font-size 1.8em
-		padding 1.5em 0
-	.single-social
-		overflow hidden
-		padding-bottom 4em
+		left 0 
+		margin 0
+		padding .5em .5em
+		position absolute
 		text-align center
-		.fb-box,
-		.twitter-box,
-		.gplus-box
-			display inline-block
-			vertical-align top
-	.single-info
-		border-bottom 1px solid #919191
+		width 100%
+.single-content
+	font-size 1.8em
+	margin-bottom 2em
+	padding 1.5em 0 0
+.single-social
+	overflow hidden
+	padding-bottom 4em
+	text-align center
+	.fb-box,
+	.twitter-box,
+	.gplus-box
+		display inline-block
+		vertical-align top
+.single-info
+	border-bottom 1px solid #919191
+	border-top 1px solid #919191
+	font-size 1.8em
+	margin-bottom 2em
+	padding 2em 0
+	position relative
+	text-align center
+	&:before
+		content ""
 		border-top 1px solid #919191
-		font-size 1.8em
-		margin-bottom 0.7em
-		padding 2em 0
+		left 0
+		position absolute
+		top 3px
+		width 100%
+	&:after
+		content ""
+		border-bottom 1px solid #919191
+		left 0
+		position absolute
+		bottom 3px
+		width 100%
+	.single-author-avatar
+		img 
+			border-radius 50%
+	.single-post-date
+		color hr_blue
+		font-size 1rem
+
+#hr-read-progress
+	background-color rgba(0,0,0,.7)
+	display table
+	height 42px
+	position fixed
+	text-align left
+	top 0
+	width 100% 
+	z-index 9
+	#hr-progress-bar
+		background #edeff0
+		position relative
+		overflow hidden
+		height 10px
+		border-radius 5px
+		box-shadow 0 1px 0 0 rgba(0,0,0,0.05) inset
+		margin 0 0 10px 0
+		width 100%
+		z-index 2
+		.progress
+			background-color hr_blue
+			font-size 0
+			height 10px
+			line-height 16px
+			transition width linear 0.1s
+			.value
+				display none
+	.hr-text
+		font-variant-numeric lining-nums
+		font-feature-settings "lnum" 1
+		color #fff
+		font-weight bold
+		letter-spacing 2px
 		position relative
 		text-align center
-		&:before
-			content ""
-			border-top 1px solid #919191
-			left 0
-			position absolute
-			top 3px
-			width 100%
-		&:after
-			content ""
-			border-bottom 1px solid #919191
-			left 0
-			position absolute
-			bottom 3px
-			width 100%
-		.single-author-avatar
-			img 
-				border-radius 50%
-		.single-post-date
-			color hr_blue
-			font-size 1rem
-	#hr-read-progress
-		background-color rgba(0,0,0,.7)
-		display table
-		height 42px
-		position fixed
-		text-align left
-		top 0
-		width 100% 
-		z-index 9
-		#hr-progress-bar
-			background #edeff0
-			position relative
-			overflow hidden
-			height 10px
-			border-radius 5px
-			box-shadow 0 1px 0 0 rgba(0,0,0,0.05) inset
-			margin 0 0 10px 0
-			width 100%
-			z-index 2
-			.progress
-				background-color hr_blue
-				font-size 0
-				height 10px
-				line-height 16px
-				transition width linear 0.1s
-				.value
-					display none
-		.hr-text
-			font-variant-numeric lining-nums
-			font-feature-settings "lnum" 1
-			color #fff
-			font-weight bold
-			letter-spacing 2px
-			position relative
-			text-align center
-			text-transform uppercase
-			vertical-align middle
-			width 100%
-			z-index 2
-	#hr-next-previous-posts
-		background-color rgba(0,0,0,.7)
-		display table
-		height 42px
-		position fixed
-		text-align left
-		top 0
-		width 100% 
-		z-index 9
-		.nav-box
-			padding-bottom 5px
-			padding-top 5px
-			&.previous
-				float left
-			&.next
-				float right 
-		.next-prev-title-span
+		text-transform uppercase
+		vertical-align middle
+		width 100%
+		z-index 2
+
+#hr-next-previous-posts
+	background-color rgba(0,0,0,.7)
+	display table
+	height 42px
+	position fixed
+	text-align left
+	top 0
+	width 100% 
+	z-index 9
+	.nav-box
+		padding-bottom 5px
+		padding-top 5px
+		&.previous
+			float left
+		&.next
+			float right 
+	.next-prev-title-span
+		color #DDD
+		display block
+		font-size 0.7em
+		letter-spacing 4px
+		margin 0.8em 0 0.5em 0
+		text-transform uppercase
+		a
 			color #DDD
-			display block
-			font-size 0.7em
-			letter-spacing 4px
-			margin 0.8em 0 0.5em 0
-			text-transform uppercase
-			a
-				color #DDD
-		.next-prev-title
-			color #fff
-			display block
-			font-size 0.9em
-			font-weight 700
-			letter-spacing 3px
-			overflow hidden
-			text-overflow ellipsis
-			text-transform uppercase
-			white-space nowrap
+	.next-prev-title
+		color #fff
+		display block
+		font-size 0.9em
+		font-weight 700
+		letter-spacing 3px
+		overflow hidden
+		text-overflow ellipsis
+		text-transform uppercase
+		white-space nowrap
 
 form,
 #suscription
@@ -367,7 +346,7 @@ footer
 			&:first-child
 				margin-right 0
 
-@media screen and (max-width:480px)
+@media screen and (max-width 480px)
 	.post-image
 		a
 			display inline-block
@@ -395,20 +374,20 @@ footer
 				text-align right
 				right 1em
 				top 1em
+	
+	#hr-next-previous-posts		
+		.nav-box.next
+			float none
+			text-align center
+			width 100% !important
+			.next-prev-title-span
+				font-size .6em
+				margin 0
+			.next-prev-title
+				margin 0 auto
+				width 290px
 
-	#single-main	
-		#hr-next-previous-posts		
-			.nav-box.next
-				float none
-				text-align center
-				width 100% !important
-				.next-prev-title-span
-					font-size .6em
-					margin 0
-				.next-prev-title
-					width 290px
-
-@media screen and (max-width:600px)
+@media screen and (max-width 600px)
 	#page-main
 		#page-header
 			.page-image
@@ -436,7 +415,7 @@ footer
 				float none
 				text-align center
 
-@media screen and (min-width:800px)
+@media screen and (min-width 800px)
 	#page-main
 		.page-image
 			height 350px
@@ -445,5 +424,39 @@ footer
 			img
 				position absolute
 				top 0
-				max-width: 1000px;
+				max-width: 1000px
+
+@media screen and (max-width 1000px) 
+	.main_menu
+		background-color #212121
+		bottom: 0
+		height: 100%
+		overflow: hidden
+		position: fixed
+		top: 0
+		z-index 2000
+		width 272px
+		&.hide-menu
+			right: -272px
+		&.show-menu
+			right 0
+		li
+			border-bottom 1px solid #333333
+			float left
+			text-align center
+			width 100%
+			a
+				color #fff
+				height 1em
+				line-height 1em
+				margin 1em 0
+				width 100%
+	article.post 
+		.post-image
+			img
+				width 100%
+
+@media screen and (min-width 1000px) 
+	.main_menu
+		background-color #212121
 

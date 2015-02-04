@@ -5,7 +5,7 @@ if (!function_exists('reedwan_admin_head')) {
         ?>
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri()."/theme-options/"; ?>css/reedwan_css.css" />
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri()."/theme-options/"; ?>css/hrmag_css.css" />
         <link rel="stylesheet" href="<?php echo get_template_directory_uri()."/theme-options/"; ?>css/colorpicker.css" />
         <link rel="stylesheet" href="<?php echo get_template_directory_uri()."/theme-options/"; ?>css/custom_style.css" />
 

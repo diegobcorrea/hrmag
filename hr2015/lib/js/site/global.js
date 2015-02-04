@@ -7,9 +7,9 @@ var hrWindow = jQuery(window),
 
 jq(document).ready( function() {
 
-    var scroller={
-        scrollTop:function(){
-            var offset = jq(window).scrollTop(),
+    var fixing={
+        fixedTop:function(){
+            var offset = jq(window).fixedTop(),
             $header = jq('#top-nav');
 
             if(offset>42){
@@ -20,14 +20,14 @@ jq(document).ready( function() {
             }
         },
         listener:function(){
-            jq(window).on('scroll',scroller.scrollTop);
+            jq(window).on('scroll',fixing.fixedTop);
         },
         init:function(){
-            scroller.listener();
+            fixing.listener();
         }
     };
 
-    scroller.init();
+    fixing.init();
 
     var $mobileButton = jq('#mobile-button'),
         $mobileNav = jq('.main_menu'),
@@ -102,7 +102,7 @@ hrWindow.load(function() {
 
     if ( hrSingleContent.length > 0 ) {
         var hrTopPostContent = ( hrSingleContent.offset().top ) / 1.2,
-            hrBottomPostContent = hrSingleContent.outerHeight(),
+            hrBottomPostContent = hrSingleContent.outerHeight() - 40,
             hrBottomPostContentAndTop = hrTopPostContent * 2 + hrBottomPostContent;
     }
 

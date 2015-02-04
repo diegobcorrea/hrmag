@@ -43,8 +43,8 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-	<?php if(get_option('tottus_favicon')): ?>
-		<link rel="shortcut icon" href="<?php echo get_option('tottus_favicon'); ?>" />
+	<?php if(get_option('hrmag_favicon')): ?>
+		<link rel="shortcut icon" href="<?php echo get_option('hrmag_favicon'); ?>" />
 	<?php endif; ?>
 	
 	<?php // Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions. ?>
@@ -54,8 +54,8 @@
 	<?php wp_head(); ?>
 
 	<?php
-	if(get_option('tottus_analytics')) {
-		echo stripslashes (get_option('tottus_analytics'));
+	if(get_option('hrmag_analytics')) {
+		echo stripslashes (get_option('hrmag_analytics'));
 	}
 	?>
 </head>
@@ -75,10 +75,10 @@
 		<nav class="row">
 			<div class="small-5 medium-5 large-5 columns">
 				<figure class="logo">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/hrlogo-sm-md.png" alt="HR MAG" width="95" height="25"></a>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/lib/images/site/hrlogo-sm-md.png" alt="HR MAG" width="95" height="25"></a>
 				</figure>
 			</div>
-			<div id="mobile-button" class="icon-menu right show-for-small-only"></div>
-			<?php wp_nav_menu( array( 'menu' => '2', 'container_class' => 'main_menu small-5 medium-7 large-7 columns hide-for-small' )); ?>
+			<div id="mobile-button" class="icon-menu right hide-for-large"></div>
+			<?php wp_nav_menu( array( 'menu' => '2', 'container_class' => 'main_menu small-5 medium-7 large-7 columns hide-for-small hide-for-medium' )); ?>
 		</nav>
 	</header>
