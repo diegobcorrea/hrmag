@@ -9,7 +9,7 @@
 						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/lib/images/site/temp/featured-640x360.jpg" alt="Esto es un post patrocinado" class="show-for-small-only"></a>
 					</figure>
 				</div>
-				<div id="post-info" class="small-12 columns">
+				<div id="post-info" class="small-12 medium-7 large-6 columns">
 					<h2><a href="#">Este es un post patrocinado por alguna marca o tienda</a></h2>
 					<div class="author-box">
 						<figure class="avatar">

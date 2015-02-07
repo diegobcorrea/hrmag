@@ -7,9 +7,9 @@ var hrWindow = jQuery(window),
 
 jq(document).ready( function() {
 
-    var fixing={
-        fixedTop:function(){
-            var offset = jq(window).fixedTop(),
+    var scroller={
+        scrollTop:function(){
+            var offset = jq(window).scrollTop(),
             $header = jq('#top-nav');
 
             if(offset>42){
@@ -20,14 +20,14 @@ jq(document).ready( function() {
             }
         },
         listener:function(){
-            jq(window).on('scroll',fixing.fixedTop);
+            jq(window).on('scroll',scroller.scrollTop);
         },
         init:function(){
-            fixing.listener();
+            scroller.listener();
         }
     };
 
-    fixing.init();
+    scroller.init();
 
     var $mobileButton = jq('#mobile-button'),
         $mobileNav = jq('.main_menu'),
@@ -72,18 +72,33 @@ jq(document).ready( function() {
     };
     mobileMenu.init();
 
+    if(hrWindowWidth <= 640){
+        jq("img.js-fix").each(function(){
+            //get height and width (unitless) and divide by 2
+            var hWide = (jq(this).width())/2; //half the image's width
 
-    jq("img.js-fix").each(function(){
-        //get height and width (unitless) and divide by 2
-        var hWide = (jq(this).width())/2; //half the image's width
+            // attach negative and pixel for CSS rule
+            hWide = '-' + hWide + 'px';
 
-        // attach negative and pixel for CSS rule
-        hWide = '-' + hWide + 'px';
-
-        jq(this).css({
-            "margin-left" : hWide,
+            jq(this).css({
+                "margin-left" : hWide,
+            });
         });
-    });
+
+        hrWindow.resize(function(){
+            jq("img.js-fix").each(function(){
+                //get height and width (unitless) and divide by 2
+                var hWide = (jq(this).width())/2; //half the image's width
+
+                // attach negative and pixel for CSS rule
+                hWide = '-' + hWide + 'px';
+
+                jq(this).css({
+                    "margin-left" : hWide,
+                });
+            });
+        });
+    }
 
 });
 
@@ -102,7 +117,7 @@ hrWindow.load(function() {
 
     if ( hrSingleContent.length > 0 ) {
         var hrTopPostContent = ( hrSingleContent.offset().top ) / 1.2,
-            hrBottomPostContent = hrSingleContent.outerHeight() - 40,
+            hrBottomPostContent = hrSingleContent.outerHeight() - 60,
             hrBottomPostContentAndTop = hrTopPostContent * 2 + hrBottomPostContent;
     }
 

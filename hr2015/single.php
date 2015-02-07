@@ -3,7 +3,7 @@
 	<div id="single-main">
 		<div id="hr-read-progress" style="display: none;">
 			<div class="row large-collapse">
-				<div class="small-12 medium-10 large-8 large-centered columns">
+				<div class="small-12 medium-10 large-8 medium-centered large-centered columns">
 					<div class="hr-text"><span id="hr-read-progress-percent">0</span> Leído</div>
 					<div id="hr-progress-bar">
 						<div class="progress" style="width: 30%;"><span class="value">30%</span></div>
@@ -12,10 +12,10 @@
 			</div>
 		</div>
 		<div id="hr-next-previous-posts" class="row navigation" style="display: none;">
-			<div class="nav-box previous hide-for-small medium-6 large-4 columns">
+			<div class="nav-box previous hide-for-small medium-5 large-4 columns">
 			<?php $prevPost = get_previous_post(true); if($prevPost): ?>
 			<?php $prevthumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $prevPost->ID) ); ?>
-				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="hr-featured-image hide-for-small">
+				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="hr-featured-image">
 					<img src="<?php echo $prevthumbnail[0] ?>" alt="<?php echo get_the_title( $prevPost->ID ); ?>">
 				</a>
 				<span class="next-prev-title-span"><a href="<?php echo get_permalink( $prevPost->ID ); ?>">Ver anterior</a></span>
@@ -26,7 +26,7 @@
 			<?php endif; ?>
 			</div>
 
-			<div class="nav-box next small-12 medium-6 large-4 columns">
+			<div class="nav-box next small-12 medium-5 large-4 columns">
 			<?php $nextPost = get_next_post(true); if($nextPost): ?>
 			<?php $nextthumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $nextPost->ID) ); ?>
 				<a href="<?php echo get_permalink( $nextPost->ID ); ?>" class="hr-featured-image hide-for-small">
