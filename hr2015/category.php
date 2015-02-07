@@ -1,31 +1,39 @@
 <?php get_header(); ?>
 
 	<div id="post-promoted">
-		<?php if ( have_posts() ) : ?>
-		<div id="category-title" class="row small-collapse medium-collapse large-collapse">
-			<h1><?php printf( __( '%s', 'twentytwelve' ), single_cat_title( '', false ) ); ?></h1>
-		</div>
-		<?php endif; ?>
 		<div class="row small-collapse medium-collapse large-collapse">
 			<div class="small-12 medium-12 large-12 columns">
+				<?php 
+
+				$query = new WP_Query( array( 
+					'posts_per_page' => 1, 
+					'order' => 'DESC',
+				)); 
+
+				?>
+				<?php if ($query->have_posts()) : $slide = 1; ?>
+		    	<?php while ( $query->have_posts() ) : $query->the_post(); global $post; ?>
 				<div class="row small-collapse medium-collapse large-collapse">
-					<figure id="image-promoted" class="small-12 medium-12 large-12">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/lib/images/site/temp/featured-1000x400.jpg" alt="Esto es un post patrocinado" class="hide-for-small-only"></a>
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/lib/images/site/temp/featured-640x360.jpg" alt="Esto es un post patrocinado" class="show-for-small-only"></a>
+					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'homepage-featured-full' ); ?>
+					<figure id="image-promoted" class="small-12 medium-12 large-12" style="background-image: url(<?php echo $image[0] ?>)">
+						
+						<!-- <a href="<?php the_permalink(); ?>"><img src="<?php // echo $image[0] ?>" alt="<?php the_title(); ?>" /></a> -->
 					</figure>
 				</div>
 				<div id="post-info" class="small-12 medium-7 large-6 columns">
-					<h2><a href="#">Este es un post patrocinado por alguna marca o tienda</a></h2>
+					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					<div class="author-box">
 						<figure class="avatar">
-							<img src="<?php echo get_template_directory_uri(); ?>/lib/images/site/temp/avatar-mr-roller.png" alt="Mr.Roller" height="50" width="50">
+							<?php echo get_wp_user_avatar(); ?>
 						</figure>
 						<div class="author-info">
-							<div class="author-name">Mr. Roller</div>
-							<div class="date-post">8 de Febrero 2015</div>
+							<div class="author-name"><?php the_author(); ?></div>
+							<div class="date-post"><?php the_time('d \d\e F, Y') ?></div>
 						</div>
 					</div>
 				</div>
+				<?php endwhile; ?>	
+				<?php endif; ?>	
 			</div>
 		</div>
 	</div><!-- #post-promoted -->

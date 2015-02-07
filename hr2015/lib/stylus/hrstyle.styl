@@ -75,23 +75,31 @@ input
 	z-index 1000
 	&.scrolled
 		background-color rgba(0,0,0,.8)
-	nav
+nav
+	overflow hidden
+	.logo
+		margin-top 0.5em
+	ul
+		list-style none
 		overflow hidden
-		.logo
-			margin-top 0.5em
-		ul
-			list-style none
-			overflow hidden
-			li
-				float left
-				overflow hidden
-				a
-					float left
-		#mobile-button
-			cursor pointer
-			font-size 32px
-			padding .1em 10px
-			width 50px
+	li
+		float left
+		margin-right 3.002em
+		overflow hidden
+		padding .8em 0
+		&:last-child
+			margin-right 0
+			a
+				color #7bc361
+		a
+			color #FFFFFF
+			float left
+			text-transform uppercase
+	#mobile-button
+		cursor pointer
+		font-size 32px
+		padding .1em 10px
+		width 50px
 
 #post-promoted
 	margin-top 42px
@@ -109,6 +117,13 @@ input
 			color #fff
 			font-size 1.5em
 			margin 0
+	.author-box
+		.avatar 
+			height auto
+			width 50px
+			img 
+				height auto
+				width 50px
 
 #image-promoted
 	background-color #333
@@ -422,7 +437,26 @@ footer
 		&:first-child
 			margin-right 0
 
+@media screen and (max-width 480px)
+	#image-promoted
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
+		max-height 180px
+		min-height 180px
+		overflow hidden
+		img
+			width 100%
 @media screen and (max-width 639px)
+	#image-promoted
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
+		max-height 280px
+		min-height 280px
+		overflow hidden
+		img
+			width 100%
 	.post-image
 		max-height 180px
 		min-height 180px
@@ -459,6 +493,9 @@ footer
 				width 290px
 
 	.single-image
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
 		min-height 400px
 		max-height 400px
 		img
@@ -469,6 +506,10 @@ footer
 	.js-fix
 		position absolute
 		left 50%
+
+	article
+		height 270px !important
+		margin-bottom 1em !important
 
 @media only screen and (min-width: 40.063em)
 	#post-info
@@ -500,7 +541,21 @@ footer
 		top 3.35em
 		width 100%
 
+	#image-promoted
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
+		max-height 400px
+		min-height 400px
+		overflow hidden
+		img
+			min-height 400px
+			width 100%
+
 	.single-image 
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
 		min-height 400px
 		min-width 100%
 		img
@@ -549,8 +604,8 @@ footer
 		overflow: hidden;
 		position relative
 		h2
-			font-size: 1.8em;
-			text-align: center;
+			font-size 1.8em
+			text-align center
 
 @media only screen and (max-width: 46.875em)
 	.post-image
@@ -564,7 +619,21 @@ footer
 			text-align center
 			width 100% !important
 
+	#image-promoted
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
+		max-height 400px
+		min-height 400px
+		overflow hidden
+		img
+			min-height 400px
+			width 100%
+	
 	.single-image 
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
 		min-height 400px
 
 	article
@@ -577,7 +646,6 @@ footer
 
 @media screen and (max-width 64.063em) 
 	.main_menu
-		background-color #212121
 		bottom: 0
 		height: 100%
 		overflow: hidden
@@ -606,10 +674,19 @@ footer
 			width 100%	
 
 @media screen and (min-width 64.063em)
-	.main_menu
-		background-color #212121
+	#image-promoted
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
+		max-height 540px
+		min-height 540px
+		img
+			width 1000px
 
 	article 
+		height 410px
+		overflow hidden
+		position relative
 		h2
 			font-size 1.4em
 			text-align center
@@ -625,6 +702,9 @@ footer
 			width 100%
 
 	.single-image 
+		background-size cover
+		background-repeat no-repeat
+		background-position 50% 50%
 		height 540px
 		img
 			height auto

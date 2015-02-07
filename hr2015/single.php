@@ -44,9 +44,8 @@
 		<div class="row small-collapse medium-collapse large-collapse">
 			<div class="small-12 medium-12 large-12 columns">
 			<?php while ( have_posts() ) : the_post(); ?>
-				<figure class="single-image">
-					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'homepage-featured-full' ); ?>
-					<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" class="js-fix">
+				<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'homepage-featured-full' ); ?>
+				<figure class="single-image" style="background-image: url(<?php echo $image[0] ?>)">
 					<h1 class="single-title"><?php the_title(); ?></h1>
 				</figure>
 				<div class="row">
