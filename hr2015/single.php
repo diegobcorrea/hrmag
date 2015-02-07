@@ -45,7 +45,7 @@
 			<div class="small-12 medium-12 large-12 columns">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<figure class="single-image">
-					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-image' ); ?>
+					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'homepage-featured-full' ); ?>
 					<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" class="js-fix">
 					<h1 class="single-title"><?php the_title(); ?></h1>
 				</figure>

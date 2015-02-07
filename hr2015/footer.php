@@ -12,12 +12,12 @@
 ?>
 
 	<footer class="row">
-		<div class="medium-2 large-3 columns hide-for-small">
+		<div class="medium-2 large-2 columns hide-for-small">
 			<figure class="logo">
 				<img src="<?php echo get_template_directory_uri(); ?>/lib/images/site/hrlogo-sm-md.png" alt="HR MAG" width="95" height="25">
 			</figure>
 		</div>
-		<div class="footer-nav small-8 medium-8 large-7 columns">
+		<div class="footer-nav small-8 medium-8 large-8 columns">
 			<?php wp_nav_menu( array( 'menu' => '1', 'container_class' => '' )); ?>
 		</div>
 		<div class="footer-redes small-4 medium-2 large-2 columns">

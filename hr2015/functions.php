@@ -87,10 +87,12 @@ function theme_setup() {
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
-	add_image_size( 'homepage-featured-full', 1000, 400, true );
+
+	add_image_size( 'homepage-featured-full', 1000, 600 );
 	add_image_size( 'homepage-featured-small', 640, 360, true );
 	add_image_size( 'post-image', 580, 360, true );
-	add_image_size( 'page-image', 1000, 320, true );
+	add_image_size( 'post-32x32', 32, 32, true );
+	add_image_size( 'page-image', 1000, 600 );
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 

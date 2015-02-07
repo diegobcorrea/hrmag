@@ -21,6 +21,12 @@ img
 ul
 	margin 0
 	padding 0
+label
+	display inline-block
+	width 100%
+input
+	&:valid
+		border 1px solid green
 
 // CSS General
 .noPadding 
@@ -33,6 +39,27 @@ ul
 	display block !important
 .ohidden
 	overflow hidden
+.left
+	float left !important 
+.right
+	float right !important 
+.clearfixbefore, .clearfixafter
+	content " "
+	display table 
+.clearfixafter
+	clear both 
+.hide
+	display none !important
+	visibility hidden 
+.invisible
+	visibility hidden 
+.column.centered,
+.columns.centered
+	margin-left auto
+	margin-right auto
+	float none 
+.text-center
+	text-align center
 
 
 // CSS
@@ -119,41 +146,93 @@ ul
 #post-list
 	margin-top 1em
 	overflow hidden
-	article
-		margin-bottom 2.5em
-		.post-image
-			position relative
-			.count-comments
-				background-color rgba(75,75,75,.8)
-				border-radius 0 0 0 5px
-				color #fff
-				font-size .7em
-				padding .3em
-				position absolute
-				top 0
-				right 0
-				
-			a
-				display inline-block
-				width 100%
-		h2
+article
+	margin-bottom 4.5em
+	.post-image
+		position relative
+		.count-comments
+			background-color rgba(75,75,75,.8)
+			border-radius 0 0 0 5px
+			color #fff
+			font-size .7em
+			padding .3em
+			position absolute
+			top 0
+			right 0
+			
+		a
+			display inline-block
+			width 100%
+	h2
+		color #212121
+		font-size 1.4em
+		font-weight 700
+		margin 0 0 .2em
+		padding .4em 0
+		text-align: center;
+		a
 			color #212121
-			font-size 1.4em
-			font-weight 700
-			margin 0 0 .2em
-			padding .4em 0
-			a
-				color #212121
-		.post-footer
-			overflow hidden
-			.date-post
-				color #416AB2
+	.post-content
+		font-size 1.2rem
+		height 120px
+		margin-bottom 1em
+		overflow hidden
+		position relative
+		&:after
+			content ""
+			display block
+			position absolute
+			bottom -5px
+			left 0
+			width 100%
+			height 80%
+			background-size 100%
+			background gradient(linear,50% 0,50% 100%,color-stop(0,rgba(255,255,255,0)),color-stop(100%,#FFFFFF))
+			background linear-gradient(top,rgba(255,255,255,0) 0,#FFFFFF 100%)
+	.post-footer
+		overflow hidden
+		.date-post
+			color #416AB2
 
-#page-main
+.page-content
 	margin-top 42px
 	min-height 450px
 	overflow hidden
 	position relative
+	.page-image
+		background-color #000
+		background-position center
+		background-repeat no-repeat
+		background-size cover
+		position relative
+		h1
+			z-index: 2;
+		&:after
+			background-color rgba(0,0,0,.3)
+			content ''
+			height 100%
+			position absolute
+			width 100%	
+	h2
+		margin-top 1.2em
+		&.publicity
+			font-size 2em
+	.input-icon
+		color hr_blue
+		font-size 12em
+		text-align center
+
+.extraTitle__one
+	font-size 2.65em
+	font-weight bold
+	padding 1em 10px 1em
+	span
+		color hr_blue
+
+.extraTitle__two
+	font-size 2.5em
+	font-weight bold
+	padding 1em 10px 1em
 
 #single-main
 	margin-top 42px
@@ -298,26 +377,26 @@ ul
 form,
 #suscription
 	margin-bottom 3em
-	margin-top 3em
-	.item-box
-		position relative
-		.input-icon
-			color #8B8B8B
-			font-size 2em
-			left .3em
-			position absolute
-			text-align center
-			top .25em
-			width 30px
-	.submit-box
-		input[type="submit"]
-			background-color #FF6B0C
-			border 1px solid #888888
-			border-radius 5px
-			color #fff
-			padding .75em
-			text-transform uppercase
-			width 100%
+	margin-top 1em
+.item-box
+	position relative
+	.input-icon
+		color #8B8B8B
+		font-size 2em
+		left .3em
+		position absolute
+		text-align center
+		top .25em
+		width 30px
+.submit-box
+	input[type="submit"]
+		background-color #FF6B0C
+		border 1px solid #888888
+		border-radius 5px
+		color #fff
+		padding .95em
+		text-transform uppercase
+		width 100%
 
 footer
 	background-color rgba(0,0,0,1)
@@ -328,7 +407,7 @@ footer
 .footer-nav
 	ul
 		list-style none
-		margin .4em 0
+		margin .815em 0 0
 		overflow hidden
 		li
 			float left
@@ -345,8 +424,8 @@ footer
 
 @media screen and (max-width 639px)
 	.post-image
-		max-height 116px
-		min-height 116px
+		max-height 180px
+		min-height 180px
 		overflow hidden
 		a
 			display inline-block
@@ -354,26 +433,18 @@ footer
 			img 
 				width 100%
 
-	#page-main
-		#page-header
-			.page-image
-				background-color #000
-				height 260px
-				position relative
-				img
-					height 260px
-					opacity 0.7
-					position absolute
-					top 0
-					max-width: 480px;
-			.page-title-caption
-				color #fff
-				font-size 1.5em
-				margin 0
-				position absolute
-				text-align right
-				right 1em
-				top 1em
+	.page-image
+		height 260px
+		position relative
+	.page-title-caption
+		color #fff
+		font-size 2em
+		margin 0
+		max-width 608px
+		padding 0 1em
+		position absolute
+		text-align center
+		top 1.5em
 	
 	#hr-next-previous-posts		
 		.nav-box.next
@@ -413,9 +484,21 @@ footer
 			padding .4em 0 .2em
 
 	.post-image
-		max-height 188px
-		min-height 188px
+		max-height 280px
+		min-height 280px
 		overflow hidden
+	.page-image
+		height 400px
+		position relative
+	.page-title-caption
+		color #fff
+		font-size 2.65em
+		margin 0
+		padding 0 10%
+		position absolute
+		text-align center
+		top 3.35em
+		width 100%
 
 	.single-image 
 		min-height 400px
@@ -461,7 +544,19 @@ footer
 				&::last-child
 					margin-right 0
 
+	article 	
+		height 520px
+		overflow: hidden;
+		position relative
+		h2
+			font-size: 1.8em;
+			text-align: center;
+
 @media only screen and (max-width: 46.875em)
+	.post-image
+		max-height 180px
+		min-height 180px
+		overflow hidden
 	.nav-box
 		&.previous 
 			display none !important
@@ -471,6 +566,14 @@ footer
 
 	.single-image 
 		min-height 400px
+
+	article
+		height 400px
+		overflow: hidden;
+		position relative 
+		h2
+			font-size 1.4em
+			text-align center	
 
 @media screen and (max-width 64.063em) 
 	.main_menu
@@ -497,14 +600,22 @@ footer
 				line-height 1em
 				margin 1em 0
 				width 100%
-	article.post 
-		.post-image
-			img
-				width 100%	
+	.post-image
+		img
+			height 100%
+			width 100%	
 
 @media screen and (min-width 64.063em)
 	.main_menu
 		background-color #212121
+
+	article 
+		h2
+			font-size 1.4em
+			text-align center
+		.post-content
+			font-size 1rem
+
 	
 	.post-image
 		max-height 188px
@@ -514,9 +625,17 @@ footer
 			width 100%
 
 	.single-image 
-		height 621px
+		height 540px
 		img
 			height auto
 			margin-left 0 !important
 			width 1000px
+	.single-content
+		font-size 1.4em
+		margin-bottom 2em
+		padding 1.5em 0 0
+
+	.footer-nav ul li
+		line-height 1em
+		margin-right .75em
 

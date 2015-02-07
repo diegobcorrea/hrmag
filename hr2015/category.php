@@ -33,23 +33,24 @@
 		<div class="row">
 			<?php if ( have_posts() ) : ?>
 	    	<?php while ( have_posts() ) : the_post(); global $post; ?>
-	    	<div class="small-12 medium-6 large-4 columns">
-				<article class="post">
-					<figure class="post-image">
-						<div class="count-comments">
-							<span class="icon-comment"></span>
-							<fb:comments-count href="<?php the_permalink(); ?>"></fb:comments-count>
-						</div>
-						<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-image' ); ?>
-						<a href="<?php the_permalink(); ?>"><img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" height="180" width="290"></a>
-					</figure>
-					<h2 class="post-title border-bottom"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-					<div class="post-footer">
-						<div class="author-name left"><?php the_author(); ?></div>
-						<div class="date-post right"><?php the_time('d \d\e F, Y') ?></div>
+	    	<article id="post-<?php the_ID(); ?>" class="post small-12 medium-6 large-4 columns">
+				<figure class="post-image">
+					<div class="count-comments">
+						<span class="icon-comment"></span>
+						<fb:comments-count href="<?php the_permalink(); ?>"></fb:comments-count>
 					</div>
-				</article>
-			</div>
+					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-image' ); ?>
+					<a href="<?php the_permalink(); ?>"><img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" height="180" width="290"></a>
+				</figure>
+				<h2 class="post-title border-bottom"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+				<div class="post-content hide-for-small">
+					<?php the_excerpt(); ?>
+				</div>
+				<div class="post-footer">
+					<div class="author-name left"><?php the_author(); ?></div>
+					<div class="date-post right"><?php the_time('d \d\e F, Y') ?></div>
+				</div>
+			</article>
 			<?php endwhile; ?>	
 			<?php endif; ?>
 		</div>
