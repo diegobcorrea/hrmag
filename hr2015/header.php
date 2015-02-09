@@ -7,35 +7,27 @@
 	<meta property="fb:admins" content="{YOUR_FACEBOOK_USER_ID}"/>
 	<meta property="fb:app_id" content="704086572939854"/>
 
+	<title><?php wp_title( '|', true, 'right' ); ?></title>
+
 	<?php if (is_single()) : ?>
-	<?php
+	<?php 
+		$content = get_post_field( 'post_content', $post->ID );
+		$content_parts = get_extended( $content );
 
-	$name 			= get_post_meta($post->ID, 'name_value', true);
-	$lastname 		= get_post_meta($post->ID, 'lastname_value', true);
-	$team 			= get_post_meta($post->ID, 'team_value', true);
-	$video_type 	= get_post_meta($post->ID, 'video_type_value', true);
-	$video_id 		= get_post_meta($post->ID, 'video_id_value', true);
-	$imageShare 	= get_post_meta($post->ID, 'video_image_value', true);
-	$votes 			= get_post_meta($post->ID, 'votes_value', true);
-	$dni 			= get_post_meta($post->ID, 'dni_value', true);
-
+		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'homepage-featured-full' ); 
 	?>
-	<title>Ficha de <?php echo $name; ?> <?php echo $lastname; ?> | Pichanga Tottus</title>
-
-	<meta property="og:site_name" content="Ficha de <?php echo $name; ?> <?php echo $lastname; ?> | Pichanga Tottus" />
+	<meta property="og:site_name" content="<?php single_post_title(''); ?>" />
 	<meta property="og:locale" content="es_ES" />
-	<meta property="og:url" content="<?php echo get_permalink( $post->ID ) ?>"/>
-	<meta property="og:description" content="Vota por <?php echo $name; ?> <?php echo $lastname; ?> en la Pichanga Tottus" />
-	<meta property="og:image" content="<?php echo $imageShare; ?>" />
-	<link rel="image_src" href="<?php echo $imageShare; ?>" id="image_src" />
+	<meta property="og:url" content="<?php the_permalink() ?>"/>
+	<meta property="og:description" content="<?php echo wp_strip_all_tags($content_parts['main']); ?>" />
+	<meta property="og:image" content="<?php echo $image[0]; ?>" />
+	<link rel="image_src" href="<?php echo $image[0]; ?>" id="image_src" />
 	<!-- if page is others -->
 	<?php else : ?>
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
-	
 	<meta property="og:image" content="http://maspormenos.com.pe/pichangatottus/wp-content/themes/tottus/images/bg-widescreen.png">
 	<link rel="image_src" href="http://maspormenos.com.pe/pichangatottus/wp-content/themes/tottus/images/bg-widescreen.png" id="image_src" />
-	<meta property="og:description" content="<?php echo $description; ?>">
-	<meta property="og:site_name" content="Pichanga Tottus">
+	<meta property="og:description" content="Blog de patinaje donde encontrarás las útlimas noticias, eventos, reviews y todo el contenido sobre patinaje en un solo lugar.">
+	<meta property="og:site_name" content="<?php wp_title( '|', true, 'right' ); ?>">
 	<meta property="og:type" content="blog">
 	<meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
 	<?php endif; ?>

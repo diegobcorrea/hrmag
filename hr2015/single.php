@@ -19,7 +19,7 @@
 					<img src="<?php echo $prevthumbnail[0] ?>" alt="<?php echo get_the_title( $prevPost->ID ); ?>">
 				</a>
 				<span class="next-prev-title-span"><a href="<?php echo get_permalink( $prevPost->ID ); ?>">Ver anterior</a></span>
-				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="next-prev-title"><?php echo get_the_title( $prevPost->ID ); ?></a>
+				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="next-prev-title"><?php echo short_title('...', 20); ?></a>
 			<?php else: ?>
 				<span class="next-prev-title-span">No hay artículos antiguos</span>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="next-prev-title">Volver al inicio</a>
@@ -33,7 +33,7 @@
 					<img src="<?php echo $nextthumbnail[0] ?>" alt="<?php echo get_the_title( $nextPost->ID ); ?>">
 				</a>
 				<span class="next-prev-title-span"><a href="<?php echo get_permalink( $nextPost->ID ); ?>">Ver siguiente</a></span>
-				<a href="<?php echo get_permalink( $nextPost->ID ); ?>" class="next-prev-title"><?php echo get_the_title( $nextPost->ID ); ?></a>
+				<a href="<?php echo get_permalink( $nextPost->ID ); ?>" class="next-prev-title"><?php echo short_title('...', 20); ?></a>
 			<?php else: ?>
 				<span class="next-prev-title-span">No hay artículos nuevos</span>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="next-prev-title">Volver al inicio</a>

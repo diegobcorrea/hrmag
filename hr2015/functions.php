@@ -241,3 +241,13 @@ function theme_entry_meta() {
 	);
 }
 endif;
+
+function short_title($after = '', $length) {
+	$mytitle = get_the_title( $prevPost->ID );;
+	if ( strlen($mytitle) > $length ) {
+		$mytitle = substr($mytitle,0,$length);
+		return $mytitle.$after;
+	} else {
+		return $mytitle;
+	}
+}
