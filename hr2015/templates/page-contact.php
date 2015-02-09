@@ -1,42 +1,45 @@
 <?php
 /**
- * Template Name: Tpl Suscription
+ * Template Name: Tpl Contact
  */
 ?>
 <?php get_header(); ?>
 
-	<div id="page-main" class="page-content">
+	<div id="page-main" class="page-content text-center">
 		<div class="row small-collapse medium-collapse large-collapse ohidden">
-			<div id="page-header" class="small-12 medium-12 large-12 columns ohidden">
-				<?php while ( have_posts() ) : the_post(); ?>
-				<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'page-full' ); ?>
-				<div class="page-image" style="background-image: url(<?php echo $image[0] ?>)">
-					<h1 class="page-title-caption">Recibe noticias, eventos y lo mejor del patinaje cada semana</h1>
-				</div>
-				<?php endwhile; ?>
-			</div>
-		</div>
-		<div class="row small-collapse medium-collapse large-collapse ohidden">
-			<h2 class="text-center small-12 medium-6 large-6 medium-centered large-centered columns">Ingresa tus datos</h2>
-		</div>
-		<form id="suscription" class="row ohidden" action="post" validate >
-			<div class="small-12 medium-6 large-8 medium-centered large-centered columns">
-				<label for="username" class="item-box">
-					<span class="icon-user input-icon"></span>
-					<input type="text" id="username" name="username" placeholder="Nombre completo" required />
-				</label>
-			</div>
-			<div class="small-12 medium-6 large-8 medium-centered large-centered columns">
-				<label for="usermail" class="item-box">
-					<span class="icon-mail input-icon"></span>
-					<input type="email" id="usermail" name="usermail" placeholder="Correo electrónico" required />
-				</label>
+			<div class="medium-10 large-8 medium-centered large-centered columns">
+				<h1>HRmag.la es fácil de contactar</h1>
+				<p>Solo tienes que escribirnos mediante alguno de estos canales y te responderemos lo mas rápido posible:</p>
 			</div>
 
-			<div class="small-12 medium-6 large-8 medium-centered large-centered columns submit-box">
-				<input type="submit" id="sendSuscription" value="Quiero estar informado">
+			<div class="fb socbox medium-4 large-4 columns">
+				<h3>Facebook</h3>
+				<div class="socialInfo">
+					<a href="https://www.facebook.com/heyroller" target="_blank">
+						<span class="icon-facebook contact-icon"></span>
+						<p>/heyroller</p>
+					</a>
+				</div>
 			</div>
-		</form>
+			<div class="tw socbox medium-4 large-4 columns">
+				<h3>Twitter</h3>
+				<div class="socialInfo">
+					<a href="http://www.twitter.com/hrollermag" target="_blank">
+						<span class="icon-twitter contact-icon"></span>
+						<p>/hrollermag</p>
+					</a>
+				</div>
+			</div>
+			<div class="ml socbox medium-4 large-4 columns">
+				<h3>Correo electrónico</h3>
+				<div class="socialInfo">
+					<a href="mailto:hola@hrmag.la">
+						<span class="icon-email contact-icon"></span>
+						<p>hola@hrmag.la</p>
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div id="post-list">
