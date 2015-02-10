@@ -24,7 +24,7 @@
 					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					<div class="author-box">
 						<figure class="avatar">
-							<?php echo get_wp_user_avatar(); ?>
+							<?php echo get_avatar( get_the_author_meta( 'ID' ), 150 ); ?>
 						</figure>
 						<div class="author-info">
 							<div class="author-name"><?php the_author(); ?></div>

@@ -66,7 +66,7 @@
 						    </div>
 						</div>
 						<div class="single-info">
-							<div class="single-author-avatar"><?php echo get_wp_user_avatar(); ?></div>
+							<div class="single-author-avatar"><?php echo get_avatar( get_the_author_meta( 'ID' ), 150 ); ?></div>
 							<div class="single-author-name"><?php the_author(); ?></div>
 							<div class="single-post-date"><?php the_time('d \d\e F, Y') ?></div>
 						</div>
