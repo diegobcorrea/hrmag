@@ -3,6 +3,11 @@
 	<div id="post-promoted">
 		<div class="row small-collapse medium-collapse large-collapse">
 			<div class="small-12 medium-12 large-12 columns">
+				<?php if ( have_posts() ) : ?>
+				<div id="category-title" class="small-12 medium-12 large-12 columns">
+					<h1><?php printf( __( '%s', 'twentytwelve' ), single_cat_title( '', false ) ); ?></h1>
+				</div>
+				<?php endif; ?>
 				<?php 
 
 				$query = new WP_Query( array( 
