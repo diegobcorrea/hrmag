@@ -770,4 +770,3 @@ function pexeto_get_post_meta($page_id, $keys){
 	}
 	return $res;
 }
-
