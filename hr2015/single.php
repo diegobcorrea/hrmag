@@ -14,12 +14,12 @@
 		<div id="hr-next-previous-posts" class="row navigation" style="display: none;">
 			<div class="nav-box previous hide-for-small medium-5 large-4 columns">
 			<?php $prevPost = get_previous_post(true); if($prevPost): ?>
-			<?php $prevthumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $prevPost->ID) ); ?>
+			<?php $prevthumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $prevPost->ID ) ); ?>
 				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="hr-featured-image">
 					<img src="<?php echo $prevthumbnail[0] ?>" alt="<?php echo get_the_title( $prevPost->ID ); ?>">
 				</a>
 				<span class="next-prev-title-span"><a href="<?php echo get_permalink( $prevPost->ID ); ?>">Ver anterior</a></span>
-				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="next-prev-title"><?php echo short_title('...', 20); ?></a>
+				<a href="<?php echo get_permalink( $prevPost->ID ); ?>" class="next-prev-title"><?php echo short_title('...', 20, $prevPost->ID); ?></a>
 			<?php else: ?>
 				<span class="next-prev-title-span">No hay artículos antiguos</span>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="next-prev-title">Volver al inicio</a>
@@ -28,12 +28,12 @@
 
 			<div class="nav-box next small-12 medium-5 large-4 columns">
 			<?php $nextPost = get_next_post(true); if($nextPost): ?>
-			<?php $nextthumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $nextPost->ID) ); ?>
+			<?php $nextthumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $nextPost->ID ) ); ?>
 				<a href="<?php echo get_permalink( $nextPost->ID ); ?>" class="hr-featured-image hide-for-small">
 					<img src="<?php echo $nextthumbnail[0] ?>" alt="<?php echo get_the_title( $nextPost->ID ); ?>">
 				</a>
 				<span class="next-prev-title-span"><a href="<?php echo get_permalink( $nextPost->ID ); ?>">Ver siguiente</a></span>
-				<a href="<?php echo get_permalink( $nextPost->ID ); ?>" class="next-prev-title"><?php echo short_title('...', 20); ?></a>
+				<a href="<?php echo get_permalink( $nextPost->ID ); ?>" class="next-prev-title"><?php echo short_title('...', 20, $nextPost->ID); ?></a>
 			<?php else: ?>
 				<span class="next-prev-title-span">No hay artículos nuevos</span>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="next-prev-title">Volver al inicio</a>

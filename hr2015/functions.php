@@ -242,8 +242,8 @@ function theme_entry_meta() {
 }
 endif;
 
-function short_title($after = '', $length) {
-	$mytitle = get_the_title( $prevPost->ID );;
+function short_title($after = '', $length, $postID) {
+	$mytitle = get_the_title( $postID );;
 	if ( strlen($mytitle) > $length ) {
 		$mytitle = substr($mytitle,0,$length);
 		return $mytitle.$after;
