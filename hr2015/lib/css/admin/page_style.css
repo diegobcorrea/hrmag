@@ -1,5 +1,17 @@
 @IMPORT url("jquery.ui.dialog.css");
 
+#wpadminbar #wp-admin-bar-theme-switcher .ab-icon:before {
+	content: '\f132';
+	top: 4px;
+}
+#wpadminbar #wp-admin-bar-theme-switcher li.active a {
+	color: green;
+}
+#wpadminbar #wp-admin-bar-theme-switcher li.active a:after {
+	content: ' (active)';
+	color: green;	
+}
+
 #adminmenu .wp-menu-image img {
 	padding: 3px 0 0 3px;
 	opacity: .6;

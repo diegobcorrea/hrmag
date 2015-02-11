@@ -39,8 +39,7 @@ if(is_admin()){
 		wp_enqueue_script('theme-metaboxes-options',THEME_SCRIPT_URL.'metaboxes_scripts.js');
 		wp_enqueue_script('theme-myupload-options',THEME_SCRIPT_URL.'my_upload.js');
 		wp_enqueue_script('theme-options',THEME_SCRIPT_URL.'options.js');
-		
-		
+		wp_enqueue_script('theme-switcher-options',THEME_SCRIPT_URL.'switcher-options.js');
 
 		//set the style files
 		add_editor_style('lib/formatting-buttons/custom-editor-style.css');
@@ -100,15 +99,19 @@ function theme_scripts_styles() {
 	global $wp_styles;
 
 	/*
-	 * Adds JavaScript for handling the navigation menu hide-and-show behavior.
+	 * Adds JavaScript if theme is develop or production mode 
 	 */
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('theme-js-prefixfree', get_template_directory_uri() . '/lib/js/site/prefixfree.min.js');
-	wp_enqueue_script('theme-js-hammer', get_template_directory_uri() . '/lib/js/site/hammer.js');
-	wp_enqueue_script('theme-js-modernizr', get_template_directory_uri() . '/lib/js/site/vendor/modernizr.js');
-	wp_enqueue_script('theme-js-validate', get_template_directory_uri() . '/lib/js/site/jquery.validate.js');
+	if( get_option( 'theme_status_dev') != 0 ):
+		wp_deregister_script('jquery');
+		wp_enqueue_script('theme-js-jquery', get_template_directory_uri() . '/lib/js/dev/jquery.js');
+		wp_enqueue_script('theme-js-prefixfree', get_template_directory_uri() . '/lib/js/dev/prefixfree.js');
+		wp_enqueue_script('theme-js-hammer', get_template_directory_uri() . '/lib/js/dev/hammer.js');
+		wp_enqueue_script('theme-js-modernizr', get_template_directory_uri() . '/lib/js/dev/vendor/modernizr.js');
 
-	wp_enqueue_script('theme-js-global', get_template_directory_uri() . '/lib/js/site/global.js');
+		wp_enqueue_script('theme-js-global', get_template_directory_uri() . '/lib/js/dev/global.js');
+	else:
+		wp_enqueue_script('theme-js-global', get_template_directory_uri() . '/lib/js/live/main.min.js');
+	endif;
 
     wp_localize_script( 'theme-js-global', 'apfajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
@@ -123,6 +126,47 @@ function theme_scripts_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts_styles' );
+
+function theme_admin_bar_render() {
+	global $wp_admin_bar;
+	// Remove comments icon
+	// We use FB comments box
+	$wp_admin_bar->remove_menu('comments');
+}
+add_action( 'wp_before_admin_bar_render', 'theme_admin_bar_render' );
+
+function add_toolbar_items($admin_bar){
+    $admin_bar->add_menu( array(
+        'id'    	=> 'theme-switcher',
+        'parent'    => 'top-secondary',
+        'title' 	=> '<span class="ab-icon"></span><span class="ab-label">Switcher</span>',
+        'href'  	=> '#',
+        'meta'  	=> array(
+            'title' => 'Switcher',            
+        ),
+    ));
+    $admin_bar->add_menu( array(
+        'id'    	=> 'theme-dev',
+        'parent' 	=> 'theme-switcher',
+        'title' 	=> 'Desarrollo',
+        'href'  	=> '#',
+        'meta'  	=> array(
+            'title' => __('Desarrollo'),
+            'class' => 'theme_switcher_class'
+        ),
+    ));
+    $admin_bar->add_menu( array(
+        'id'    	=> 'theme-prod',
+        'parent' 	=> 'theme-switcher',
+        'title' 	=> 'Producción',
+        'href'  	=> '#',
+        'meta'  	=> array(
+            'title' => __('Producción'),
+            'class' => 'theme_switcher_class'
+        ),
+    ));
+}
+add_action('admin_bar_menu', 'add_toolbar_items', 100);
 
 function theme_wp_title( $title, $sep ) {
 	global $paged, $page;
@@ -251,3 +295,37 @@ function short_title($after = '', $length, $postID) {
 		return $mytitle;
 	}
 }
+
+function change_switcher_callback() {
+	global $wpdb; // this is how you get access to the database
+
+	$status = $_POST['status'];
+
+	if( $status == 'theme-dev' ):
+		update_option( 'theme_status_dev', true );
+		$mode = 'theme-dev';
+	else:
+		update_option( 'theme_status_dev', false );
+		$mode = 'theme-prod';
+	endif;	
+
+	echo $mode;
+
+	wp_die(); // this is required to terminate immediately and return a proper response
+}
+add_action( 'wp_ajax_change_switcher', 'change_switcher_callback' );
+
+function get_theme_status_callback() {
+	global $wpdb; // this is how you get access to the database
+
+	if( get_option( 'theme_status_dev') != 0 ):
+		$mode = 'theme-dev';	
+	else:
+		$mode = 'theme-prod';
+	endif;
+
+	echo $mode;
+
+	wp_die(); // this is required to terminate immediately and return a proper response
+}
+add_action( 'wp_ajax_get_theme_status', 'get_theme_status_callback' );

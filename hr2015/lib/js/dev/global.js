@@ -1,16 +1,14 @@
-var jq = jQuery;
-
 var hrWindow = jQuery(window),
     hrWindowHeight = hrWindow.height(),
     hrWindowWidth = hrWindow.width(),
     hrHTMLBody = jQuery('html, body');
 
-jq(document).ready( function() {
+jQuery(document).ready( function() {
 
     var scroller={
         scrollTop:function(){
-            var offset = jq(window).scrollTop(),
-            $header = jq('#top-nav');
+            var offset = jQuery(window).scrollTop(),
+            $header = jQuery('#top-nav');
 
             if(offset>42){
                 $header.addClass('scrolled');
@@ -20,7 +18,7 @@ jq(document).ready( function() {
             }
         },
         listener:function(){
-            jq(window).on('scroll',scroller.scrollTop);
+            jQuery(window).on('scroll',scroller.scrollTop);
         },
         init:function(){
             scroller.listener();
@@ -29,10 +27,10 @@ jq(document).ready( function() {
 
     scroller.init();
 
-    var $mobileButton = jq('#mobile-button'),
-        $mobileNav = jq('.main_menu'),
-        $content = jq('.content'),
-        $topnav = jq('#top-nav');
+    var $mobileButton = jQuery('#mobile-button'),
+        $mobileNav = jQuery('.main_menu'),
+        $content = jQuery('.content'),
+        $topnav = jQuery('#top-nav');
 
     
 
@@ -73,27 +71,27 @@ jq(document).ready( function() {
     mobileMenu.init();
 
     if(hrWindowWidth <= 640){
-        jq("img.js-fix").each(function(){
+        jQuery("img.js-fix").each(function(){
             //get height and width (unitless) and divide by 2
-            var hWide = (jq(this).width())/2; //half the image's width
+            var hWide = (jQuery(this).width())/2; //half the image's width
 
             // attach negative and pixel for CSS rule
             hWide = '-' + hWide + 'px';
 
-            jq(this).css({
+            jQuery(this).css({
                 "margin-left" : hWide,
             });
         });
 
         hrWindow.resize(function(){
-            jq("img.js-fix").each(function(){
+            jQuery("img.js-fix").each(function(){
                 //get height and width (unitless) and divide by 2
-                var hWide = (jq(this).width())/2; //half the image's width
+                var hWide = (jQuery(this).width())/2; //half the image's width
 
                 // attach negative and pixel for CSS rule
                 hWide = '-' + hWide + 'px';
 
-                jq(this).css({
+                jQuery(this).css({
                     "margin-left" : hWide,
                 });
             });
@@ -108,7 +106,7 @@ hrWindow.load(function() {
     hrSingle = jQuery('#single-main'),
     hrSingleContent = hrSingle.find('.single-content'),
     hrReadProgress= jQuery('#hr-read-progress'),
-    hrNextPrevPosts = jq('#hr-next-previous-posts'),
+    hrNextPrevPosts = jQuery('#hr-next-previous-posts'),
     hrProgressBar = jQuery('#hr-progress-bar'),
     hrProgressBarWidth = jQuery('#hr-progress-bar .progress'),
     hrProgressBarPercent = jQuery('#hr-read-progress-percent');
@@ -154,7 +152,6 @@ hrWindow.load(function() {
 
             hrReadProgress.hide();
             hrTopnav.show();
-
         }
 
     }
@@ -167,20 +164,19 @@ hrWindow.load(function() {
 
     });
 
+    function remove_accent(str){
+        var charMap = {
+            Á:'A',É:'E',Í:'I',Ó:'O',Ú:'U',Ñ:'N',
+            á:'a',é:'e',í:'i',ó:'o',ú:'u',ñ:'n',
+        };
+
+        var str_array = str.split('');
+
+        for( var i = 0, len = str_array.length; i < len; i++ ) {
+            str_array[ i ] = charMap[ str_array[ i ] ] || str_array[ i ];
+        };
+
+        return str_array.join('');
+    }
+
 });
-
-function remove_accent(str){
-    var charMap = {
-        Á:'A',É:'E',Í:'I',Ó:'O',Ú:'U',Ñ:'N',
-        á:'a',é:'e',í:'i',ó:'o',ú:'u',ñ:'n',
-    };
-
-    var str_array = str.split('');
-
-    for( var i = 0, len = str_array.length; i < len; i++ ) {
-        str_array[ i ] = charMap[ str_array[ i ] ] || str_array[ i ];
-    };
-
-    return str_array.join('');
-}
-

@@ -1,6 +1,7 @@
 *.sh
 .DS_Store
 send_mail.py
+hr2015/package.json
 hr2015/Gruntfile.js
 hr2015/npm-debug.log
 hr2015/node_modules/
