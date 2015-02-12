@@ -44,7 +44,7 @@
 
 	<div id="post-list">
 		<div class="row">
-			<h2 class="small-12 medium-12 large-12 columns text-center">Últimas Publicaciones</h2>
+			<h2 class="last-post small-12 medium-12 large-12 columns text-center">Últimas Publicaciones</h2>
 			<?php 
 
 			$query = new WP_Query( array( 

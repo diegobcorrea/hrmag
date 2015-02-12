@@ -115,7 +115,7 @@ hrWindow.load(function() {
 
     if ( hrSingleContent.length > 0 ) {
         var hrTopPostContent = ( hrSingleContent.offset().top ) / 1.2,
-            hrBottomPostContent = hrSingleContent.outerHeight() - 60,
+            hrBottomPostContent = hrSingleContent.outerHeight(),
             hrBottomPostContentAndTop = hrTopPostContent * 2 + hrBottomPostContent;
     }
 

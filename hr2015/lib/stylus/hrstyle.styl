@@ -2,8 +2,10 @@
 @import "fonts.styl"
 @import "foundation.styl"
 
-hr_blue = #416AB2
-hr_green = #7bc361
+hr_main_color = #0D86EE
+hr_secundary_color = #BCC6CC
+hr_secundary_alpha = rgba(188,198,204,.95)
+hr_green = #93FF6C
 hr_gris = #515151
 
 *,
@@ -68,7 +70,7 @@ input
 .content
 	position relative
 #top-nav
-	background-color rgba(0,0,0,1)
+	background-color hr_secundary_color
 	color #fff
 	height 42px
 	position fixed
@@ -76,7 +78,7 @@ input
 	width 100%
 	z-index 1000
 	&.scrolled
-		background-color rgba(0,0,0,.8)
+		background-color hr_secundary_alpha
 nav
 	overflow hidden
 	.logo
@@ -92,7 +94,7 @@ nav
 		&:last-child
 			margin-right 0
 			a
-				color #7bc361
+				color hr_green
 		a
 			color #FFFFFF
 			float left
@@ -108,7 +110,7 @@ nav
 	overflow hidden
 	position relative
 	#category-title
-		background-color rgba(75,75,75,.7)
+		background-color hr_secundary_alpha
 		overflow hidden
 		position absolute
 		top 0
@@ -132,7 +134,7 @@ nav
 	background-color #333
 
 #post-info
-	background-color rgba(75,75,75,.7)
+	background-color hr_secundary_alpha
 	color #fff
 	padding-bottom .8em
 	h2
@@ -164,6 +166,9 @@ nav
 #post-list
 	margin-top 1em
 	overflow hidden
+	h2.last-post
+		color hr_main_color
+		font-size 2em
 article
 	margin-bottom 4.5em
 	.post-image
@@ -182,16 +187,16 @@ article
 			display inline-block
 			width 100%
 	h2
-		color #212121
+		color hr_main_color
 		font-size 1.4em
 		font-weight 700
 		margin 0 0 .2em
 		padding .4em 0
 		text-align: center;
 		a
-			color #212121
+			color hr_main_color
 	.post-content
-		color #515151
+		color hr_gris
 		font-size 1.2rem
 		height 120px
 		margin-bottom 1em
@@ -211,7 +216,7 @@ article
 	.post-footer
 		overflow hidden
 		.date-post
-			color #416AB2
+			color hr_main_color
 
 .page-content
 	margin-top 42px
@@ -221,10 +226,10 @@ article
 	h1
 		font-size 2.2rem
 	p
-		color #515151
+		color hr_gris
 		font-size 1.4rem
 	.page-image
-		background-color #000
+		background-color hr_secundary_color
 		background-position center
 		background-repeat no-repeat
 		background-size cover
@@ -242,7 +247,7 @@ article
 		&.publicity
 			font-size 2em
 	.input-icon
-		color hr_blue
+		color hr_main_color
 		font-size 12em
 		text-align center
 
@@ -251,7 +256,7 @@ article
 	font-weight bold
 	padding 1em 10px 1em
 	span
-		color hr_blue
+		color hr_main_color
 
 .extraTitle__two
 	font-size 2.5em
@@ -281,7 +286,7 @@ article
 		text-align left
 		width 100%
 .single-content
-	color #515151
+	color hr_gris
 	font-size 1.4em
 	margin-bottom 2em
 	padding 1.5em 1em 0
@@ -320,11 +325,11 @@ article
 		img 
 			border-radius 50%
 	.single-post-date
-		color hr_blue
+		color hr_main_color
 		font-size 1rem
 
 #hr-read-progress
-	background-color rgba(0,0,0,.7)
+	background-color hr_secundary_alpha
 	display table
 	height 42px
 	position fixed
@@ -343,7 +348,7 @@ article
 		width 100%
 		z-index 2
 		.progress
-			background-color hr_blue
+			background-color hr_main_color
 			font-size 0
 			height 10px
 			line-height 16px
@@ -365,7 +370,7 @@ article
 		z-index 2
 
 #hr-next-previous-posts
-	background-color rgba(0,0,0,.7)
+	background-color hr_secundary_alpha
 	display table
 	height 42px
 	max-width 100%
@@ -425,15 +430,16 @@ form,
 		width 100%
 
 footer
-	background-color rgba(0,0,0,1)
+	background-color hr_secundary_color
 	color #fff
-	height 42px
+	height 47px
+	padding .2em 0
 	.logo
-		padding .5em 0
+		padding .6em 0
 .footer-nav
 	ul
 		list-style none
-		margin .815em 0 0
+		margin .955em 0 0
 		overflow hidden
 		li
 			float left
@@ -452,7 +458,7 @@ footer
 	h3
 		font-size 1.4rem
 	a, p
-		color #000000
+		color hr_secundary_color
 	&.fb
 		color #416ab2
 		a:hover, a:hover p
@@ -546,7 +552,7 @@ footer
 		left 50%
 
 	article
-		height 270px !important
+		height 275px !important
 		margin-bottom 1em !important
 
 @media only screen and (min-width: 40.063em)
@@ -684,7 +690,7 @@ footer
 
 @media screen and (max-width 64.063em) 
 	.main_menu
-		background-color #212121
+		background-color hr_secundary_color
 		bottom: 0
 		height: 100%
 		overflow: hidden
