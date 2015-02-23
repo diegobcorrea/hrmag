@@ -9,14 +9,14 @@
 
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 
-	<?php if (is_single()) : ?>
+	<?php if (is_singular()) : ?>
 	<?php 
 		$content = get_post_field( 'post_content', $post->ID );
 		$content_parts = get_extended( $content );
 
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'homepage-featured-full' ); 
 	?>
-	<meta property="og:site_name" content="<?php single_post_title(''); ?>" />
+	<meta property="og:site_name" content="<?php the_title(); ?>" />
 	<meta property="og:locale" content="es_ES" />
 	<meta property="og:url" content="<?php the_permalink() ?>"/>
 	<meta property="og:description" content="<?php echo wp_strip_all_tags($content_parts['main']); ?>" />
